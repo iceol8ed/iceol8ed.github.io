@@ -112,11 +112,13 @@
                 }
             }
 
-            // Show a dialog if no results are found
+            // Show a dialog if no results are found after 3 seconds
             if (!resultsFound) {
-                if (confirm('App not found, do you want to request it?')) {
-                    submitRequest(input);
-                }
+                setTimeout(() => {
+                    if (confirm('App not found, do you want to request it?')) {
+                        submitRequest(input);
+                    }
+                }, 3000);
             }
         }
 
