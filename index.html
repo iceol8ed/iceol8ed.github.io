@@ -26,113 +26,17 @@
             border-radius: 8px;
             margin-top: 20px;
         }
-        
-        .search-container {
-            position: relative;
-            width: 50%;
-            margin: 10px auto;
-            text-align: center;
-        }
-        .search-bar {
-            width: 0;
-            padding: 0px 12px 3px 40px; /* Adjusted padding to move text upwards */
-            font-size: 16px;
-            border: none;
-            border-radius: 25px;
-            outline: none;
-            background: transparent;
-            color: white;
-            text-align: center;
-            transition: width 0.5s ease;
-            opacity: 0;
-        }
-        .search-bar.open {
-            width: 100%;
-            opacity: 1;
-            text-align: left;
-        }
-        .search-button {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            background: none;
-            border: none;
-            cursor: pointer;
-            outline: none;
-            transition: left 0.5s ease;
-        }
-        .search-bar.open + .search-button {
-            left: 10px;
-            transform: translateY(-50%);
-        }
-        .search-button img {
-            width: 20px;
-            height: 20px;
-        }
         .category {
             margin-top: 20px;
         }
-        
-        
+        /* Removed search-related styles */
     </style>
-
-    <script>
-        function toggleSearchBar() {
-            const searchBar = document.getElementById('search');
-            searchBar.classList.toggle('open');
-            if (searchBar.classList.contains('open')) {
-                searchBar.focus();
-            } else {
-                searchBar.value = '';
-            }
-        }
-
-        function searchCategories() {
-            let input = document.getElementById('search').value.toLowerCase();
-            let categories = document.getElementsByClassName('category');
-            let searchWords = input.split(/\s+/);
-
-            for (let i = 0; i < categories.length; i++) {
-                let category = categories[i];
-                let title = category.querySelector('h2'); // Get the category title
-                let paragraphs = category.querySelectorAll('p'); // Get all paragraphs within the category
-                let categoryMatchFound = false; // Flag for the entire category
-
-                // Hide all paragraphs initially
-                for (let p of paragraphs) {
-                    p.style.display = "none";
-                }
-
-                for (let j = 0; j < searchWords.length; j++) {
-                    for (let p of paragraphs) {
-                        let text = p.innerText.toLowerCase();
-                        if (text.includes(searchWords[j])) {
-                            p.style.display = "block"; // Show matching paragraph
-                            categoryMatchFound = true; // Category has at least one match
-                        }
-                    }
-                }
-
-                if (categoryMatchFound) {
-                    title.style.display = "block";  // Show the title if there's a match
-                    category.style.display = "block"; // Show the category
-                } else {
-                    category.style.display = "none"; // Hide the category if no matches
-                }
-            }
-        }
-    </script>
+    <!-- Removed search-related scripts -->
 </head>
 <body>
     <div class="container">
         <h1>awesome software</h1>
-        <div class="search-container">
-            <input type="text" id="search" class="search-bar">
-            <button class="search-button" onclick="toggleSearchBar()">
-                <img src="https://img.icons8.com/ios-filled/50/ffffff/search.png" alt="Search">
-            </button>
-        </div>
+        <!-- Removed search-container -->
         <div class="categories">
             <div class="category">
                 <h2>AI</h2>
@@ -210,7 +114,6 @@
                 <p><a href="https://www.docker.com">Docker</a> - Platform for developing, shipping, and running applications</p>
             </div>
         </div>
-        
     </div>
 </body>
 </html>
