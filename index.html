@@ -73,41 +73,8 @@
         .category {
             margin-top: 20px;
         }
-        .suggestions-container {
-            width: 80%; /* Wider container */
-            margin: 20px auto;
-            text-align: center;
-        }
-        .suggestions-input-container {
-            position: relative;
-            display: flex;
-            align-items: center;
-            margin-top: 10px; /* Add gap between text and textbox */
-        }
-        .suggestions-input {
-            width: 100%;
-            padding: 5px; /* Shorter height */
-            font-size: 16px;
-            border: 1px solid #a6da95; /* Outline color same as hyperlinks */
-            border-radius: 25px;
-            outline: none;
-            background: transparent;
-            color: white;
-            text-align: center;
-            flex-grow: 1;
-        }
-        .send-button {
-            background: none;
-            border: none;
-            cursor: pointer;
-            outline: none;
-            color: #a6da95; /* Same color as hyperlinks */
-            margin-left: -40px; /* Adjust to avoid covering text */
-        }
-        .send-button img {
-            width: 20px;
-            height: 20px;
-        }
+        
+        
     </style>
 
     <script>
@@ -155,65 +122,6 @@
                 }
             }
         }
-
-        function submitSuggestion() {
-            const suggestionInput = document.getElementById('suggestions-input');
-            const suggestion = suggestionInput.value.toLowerCase().trim();
-
-            if (suggestion) {
-                console.log('Submitting suggestion:', suggestion);
-
-                const formData = new FormData();
-                formData.append('suggestion', suggestion); // Important: Use FormData
-
-                fetch('https://script.google.com/macros/s/AKfycbyLuWkUbEvUAGVdjx2tgGKg1y0FgDEK2jn7hDynxu1979xphvXwX_Xu0BeG5D6ZiALDmw/exec', {
-                    method: 'POST',
-                    body: formData // Send the FormData object
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        console.error('Failed to submit suggestion:', response.statusText, response.status); // Include status code for debugging
-                        return response.text().then(text => { throw new Error(text) }); // Throw error with response text
-                    } else {
-                        console.log('Suggestion submitted successfully');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-
-                suggestionInput.value = '';
-            }
-        }
-
-        document.addEventListener('click', function(event) {
-            const searchBar = document.getElementById('search');
-            const searchButton = document.querySelector('.search-button');
-            if (!searchButton.contains(event.target) && !searchBar.contains(event.target)) {
-                searchBar.classList.remove('open');
-                searchBar.value = '';
-            }
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const searchInput = document.getElementById('search');
-            searchInput.addEventListener('keyup', function(event) {
-                searchCategories();
-            });
-
-            const suggestionInput = document.getElementById('suggestions-input');
-            suggestionInput.addEventListener('keypress', function(event) {
-                if (event.key === 'Enter') {
-                    event.preventDefault();
-                    submitSuggestion();
-                }
-            });
-
-            const sendButton = document.querySelector('.send-button');
-            sendButton.addEventListener('click', function() {
-                submitSuggestion();
-            });
-        });
     </script>
 </head>
 <body>
@@ -302,15 +210,7 @@
                 <p><a href="https://www.docker.com">Docker</a> - Platform for developing, shipping, and running applications</p>
             </div>
         </div>
-        <div class="suggestions-container">
-            <h2>Suggest an app</h2>
-            <div class="suggestions-input-container">
-                <input type="text" id="suggestions-input" class="suggestions-input" placeholder="Type your suggestion">
-                <button class="send-button">
-                    <img src="https://img.icons8.com/ios-filled/50/a6da95/paper-plane.png" alt="Send">
-                </button>
-            </div>
-        </div>
+        
     </div>
 </body>
 </html>
