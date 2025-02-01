@@ -159,23 +159,29 @@
         function submitSuggestion() {
             const suggestionInput = document.getElementById('suggestions-input');
             const suggestion = suggestionInput.value.toLowerCase().trim();
+
             if (suggestion) {
-                console.log('Submitting suggestion:', suggestion); // Log the suggestion being submitted
-                fetch('https://script.google.com/macros/s/AKfycbzXX_R0qes0Q9inNRbS9czip7y6O9JZWRo05MoG1mHW3ZlGCXVnVw0VjZD9KPhGqv47TQ/exec', {
+                console.log('Submitting suggestion:', suggestion);
+
+                const formData = new FormData();
+                formData.append('suggestion', suggestion); // Important: Use FormData
+
+                fetch('https://script.google.com/macros/s/AKfycbyLuWkUbEvUAGVdjx2tgGKg1y0FgDEK2jn7hDynxu1979xphvXwX_Xu0BeG5D6ZiALDmw/exec', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: `suggestion=${encodeURIComponent(suggestion)}`
-                }).then(response => {
+                    body: formData // Send the FormData object
+                })
+                .then(response => {
                     if (!response.ok) {
-                        console.error('Failed to submit suggestion:', response.statusText);
+                        console.error('Failed to submit suggestion:', response.statusText, response.status); // Include status code for debugging
+                        return response.text().then(text => { throw new Error(text) }); // Throw error with response text
                     } else {
                         console.log('Suggestion submitted successfully');
                     }
-                }).catch(error => {
+                })
+                .catch(error => {
                     console.error('Error:', error);
                 });
+
                 suggestionInput.value = '';
             }
         }
