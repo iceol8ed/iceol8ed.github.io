@@ -76,7 +76,10 @@
     </style>
 
     <script>
+        let searchTimeout;
+
         function searchCategories() {
+            clearTimeout(searchTimeout);
             let input = document.getElementById('search').value.toLowerCase();
             let categories = document.getElementsByClassName('category');
             let searchWords = input.split(/\s+/);
@@ -114,10 +117,11 @@
 
             // Show a dialog if no results are found after 3 seconds
             if (!resultsFound) {
-                setTimeout(() => {
+                searchTimeout = setTimeout(() => {
                     if (confirm('App not found, do you want to request it?')) {
                         submitRequest(input);
                     }
+                    document.getElementById('search').value = ''; // Clear the search input
                 }, 3000);
             }
         }
