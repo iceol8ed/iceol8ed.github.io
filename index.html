@@ -73,41 +73,6 @@
         .category {
             margin-top: 20px;
         }
-        .request-container {
-            width: 50%;
-            margin: 20px auto;
-            text-align: center;
-            display: none; /* Initially hidden */
-        }
-        .request-input-container {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-        .request-input {
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            border: none;
-            border-radius: 25px;
-            outline: none;
-            background: #fff;
-            color: #000;
-            text-align: center;
-            flex-grow: 1;
-        }
-        .send-button {
-            background: none;
-            border: none;
-            cursor: pointer;
-            outline: none;
-            color: #a6da95; /* Same color as hyperlinks */
-            margin-left: -40px; /* Adjust to avoid covering text */
-        }
-        .send-button img {
-            width: 20px;
-            height: 20px;
-        }
     </style>
 
     <script>
@@ -147,12 +112,11 @@
                 }
             }
 
-            // Show or hide the request container based on search results
-            const requestContainer = document.querySelector('.request-container');
-            if (resultsFound) {
-                requestContainer.style.display = 'none';
-            } else {
-                requestContainer.style.display = 'block';
+            // Show a dialog if no results are found
+            if (!resultsFound) {
+                if (confirm('App not found, do you want to request it?')) {
+                    submitRequest(input);
+                }
             }
         }
 
@@ -166,9 +130,7 @@
             }
         }
 
-        function submitRequest() {
-            const requestInput = document.getElementById('request-input');
-            const request = requestInput.value.toLowerCase().trim();
+        function submitRequest(request) {
             if (request) {
                 fetch('https://script.google.com/macros/s/AKfycbzXX_R0qes0Q9inNRbS9czip7y6O9JZWRo05MoG1mHW3ZlGCXVnVw0VjZD9KPhGqv47TQ/exec', {
                     method: 'POST',
@@ -181,7 +143,6 @@
                         console.error('Failed to submit request');
                     }
                 });
-                requestInput.value = '';
             }
         }
 
@@ -195,17 +156,12 @@
         });
 
         document.addEventListener('DOMContentLoaded', function() {
-            const requestInput = document.getElementById('request-input');
-            requestInput.addEventListener('keypress', function(event) {
+            const searchInput = document.getElementById('search');
+            searchInput.addEventListener('keypress', function(event) {
                 if (event.key === 'Enter') {
                     event.preventDefault();
-                    submitRequest();
+                    searchCategories();
                 }
-            });
-
-            const sendButton = document.querySelector('.send-button');
-            sendButton.addEventListener('click', function() {
-                submitRequest();
             });
         });
     </script>
@@ -291,15 +247,6 @@
                 <p><a href="https://github.com/dylanaraps/neofetch">Neofetch</a> - A command-line system information tool</p>
                 <p><a href="https://github.com/dylanaraps/cowsay">Cowsay</a> - A configurable talking cow</p>
                 <p><a href="https://github.com/davatorium/rofi">Rofi</a> - A window switcher, application launcher, and dmenu replacement</p>
-            </div>
-        </div>
-        <div class="request-container">
-            <h2>request more apps</h2>
-            <div class="request-input-container">
-                <input type="text" id="request-input" class="request-input">
-                <button class="send-button">
-                    <img src="https://img.icons8.com/ios-filled/50/a6da95/paper-plane.png" alt="Send">
-                </button>
             </div>
         </div>
     </div>
