@@ -7,7 +7,7 @@
     <style>
         body {
             background-color: #36454F; /* Original background color */
-            font-family: Arial, sans-serif;
+            font-family: Arial, sans-serif; /* Updated font family */
             margin: 0;
             padding: 0;
             display: flex;
@@ -37,28 +37,19 @@
             width: 0;
             padding: 12px 12px 12px 40px;
             font-size: 16px;
-            border: 2px solid transparent;
+            border: none;
             border-radius: 25px;
             outline: none;
-            background: rgba(255, 255, 255, 0.2);
+            background: transparent;
             color: white;
             text-align: center;
-            transition: width 0.5s ease, border-color 0.5s ease;
-            opacity: 0;
-        }
-        .search-bar::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-            transition: opacity 1s ease;
+            transition: width 0.5s ease;
             opacity: 0;
         }
         .search-bar.open {
             width: 100%;
             opacity: 1;
             text-align: left;
-            border-color: #a6da95; /* Updated border color */
-        }
-        .search-bar.open::placeholder {
-            opacity: 1;
         }
         .search-button {
             position: absolute;
@@ -125,15 +116,26 @@
         searchBar.classList.toggle('open');
         if (searchBar.classList.contains('open')) {
             searchBar.focus();
+        } else {
+            searchBar.value = '';
         }
     }
+
+    document.addEventListener('click', function(event) {
+        const searchBar = document.getElementById('search');
+        const searchButton = document.querySelector('.search-button');
+        if (!searchButton.contains(event.target) && !searchBar.contains(event.target)) {
+            searchBar.classList.remove('open');
+            searchBar.value = '';
+        }
+    });
     </script>     
 </head>
 <body>
     <div class="container">
         <h1>awesome software</h1>
         <div class="search-container">
-            <input type="text" id="search" class="search-bar" placeholder="Search..." onkeyup="searchCategories()">
+            <input type="text" id="search" class="search-bar" onkeyup="searchCategories()">
             <button class="search-button" onclick="toggleSearchBar()">
                 <img src="https://img.icons8.com/ios-filled/50/ffffff/search.png" alt="Search">
             </button>
@@ -157,6 +159,7 @@
                 <p><a href="https://arc.net">Arc</a> - A new, aesthetically pleasing browser</p>
                 <p><a href="https://brave.com">Brave</a> - Chromium-based browser with built in adblocker</p>
                 <p><a href="https://github.com/uazo/cromite">Cromite</a> - Mobile browser with support for Chrome extensions</p>
+                <p><a href="https://thorium.rocks">Thorium</a> - A Chromium-based browser with extra features</p>
             </div>
             <div class="category">
                 <h2>File Management</h2>
@@ -167,6 +170,7 @@
             <div class="category">
                 <h2>Media Players</h2>
                 <p><a href="https://github.com/iina/iina">IINA</a> - Modern media player for macOS</p>
+                <p><a href="https://www.videolan.org/vlc/">VLC</a> - Open-source cross-platform multimedia player</p>
             </div>
             <div class="category">
                 <h2>Movies / TV Shows</h2>
@@ -179,6 +183,7 @@
                 <p><a href="https://nicotine-plus.org">Nicotine+</a> - Free and open-source music sharing client</p>
                 <p><a href="https://github.com/SpotX-Official/SpotX">SpotX</a> - Ad blocker and more for Spotify on Windows</p>
                 <p><a href="https://github.com/SpotX-Official/SpotX-Bash">SpotX (macOS and Linux)</a> - Ad blocker and more for Spotify on macOS and Linux</p>
+                <p><a href="https://librescore.org">LibreScore</a> - Open-source music notation software</p>
             </div>
             <div class="category">
                 <h2>Productivity</h2>
@@ -202,6 +207,10 @@
                 <p><a href="https://christitus.com/windows-tool/">Titus Windows Tool</a> - Windows utility tool</p>
                 <p><a href="https://apps.microsoft.com/detail/9pf4kz2vn4w9?rtc=1&hl=el-GR&gl=GR">TranslucentTB</a> - Customize the appearance of your taskbar</p>
                 <p><a href="https://github.com/hainguyents13/sanssidebuttons">SansSideButtons</a> - Make use of side buttons of third-party mice on macOS</p>
+                <p><a href="https://sw.kovidgoyal.net/kitty/">Kitty</a> - Fast, feature-rich, GPU-based terminal emulator</p>
+                <p><a href="https://neovim.io/">Neovim</a> - Hyperextensible Vim-based text editor</p>
+                <p><a href="https://www.progressivedownloader.com">Progressive Downloader</a> - Advanced download manager for macOS</p>
+                <p><a href="https://xmanager.com">Xmanager</a> - High-performance PC X server</p>
             </div>
         </div>
     </div>
