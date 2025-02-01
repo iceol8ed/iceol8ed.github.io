@@ -27,89 +27,28 @@
         h1 {
             text-align: center;
         }
-       .search-container {
-          position: relative; /* Needed for absolute positioning of the search bar */
-          width: 100%; /* Occupy full width */
-          display: flex;
-          justify-content: center; /* Center the magnifying glass */
-          margin-bottom: 10px; /* Add some space below the search bar */
-        }
-
-       .search-icon {
-        cursor: pointer;
-        font-size: 2em;
-        color: white;
-        transition: transform 0.3s ease;
-        display: flex; /* Make sure the icon is visible */
-        align-items: center; /* Vertically center the icon */
-        justify-content: center; /* Horizontally center the icon */
-      }     
-
-        .search-icon:hover {
-          transform: scale(1.1); /* Slightly enlarge on hover */
-        }
-
-
-        .search-bar {
-          width: 0; /* Initially hidden */
-          padding: 0;
-          font-size: 16px;
-          border: none;
-          border-radius: 25px;
-          outline: none;
-          background: rgba(255, 255, 255, 0.2);
-          color: white;
-          text-align: left; /* Align text to the left */
-          position: absolute; /* Position over the icon */
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%); /* Center the search bar */
-          transition: width 0.5s ease, padding 0.5s ease; /* Smooth animation */
-          box-sizing: border-box; /* Include padding and border in element's total width and height */
-        }
-
-        .search-bar::placeholder {
-          color: rgba(255, 255, 255, 0.7);
-        }
-
-        .search-bar.active {
-          width: 100%; /* Expand on click */
-          padding: 12px; /* Add padding when visible */
-        } 
-        
+          .search-bar {
+            width: 50%;
+            padding: 12px;
+            font-size: 16px;
+            margin: 10px auto;
+            display: block;
+            border: none;
+            border-radius: 25px;
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-align: center;
+        }
+        .search-bar::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+               
         .category {
             margin-top: 20px;
         }
     </style>
     <script>
-      function toggleSearch() {
-          const searchBar = document.querySelector('.search-bar');
-          const searchIcon = document.querySelector('.search-icon');
-
-          searchBar.classList.toggle('active');
-
-          if (searchBar.classList.contains('active')) {
-            searchBar.focus(); // Automatically focus on the input field
-            searchIcon.style.display = "none"; //hide magnifying glass when search bar is active
-          } else {
-            searchBar.blur();  // Remove focus from the input field
-            searchIcon.style.display = "inline-block"; //show magnifying glass when search bar is not active
-            searchCategories(); // Perform the search when closing
-          }
-        }
-
-        // Close the search bar if the user clicks outside of it
-        window.addEventListener('click', function(event) {
-          const searchBar = document.querySelector('.search-bar');
-          const searchIcon = document.querySelector('.search-icon');
-          const searchContainer = document.querySelector('.search-container');
-
-          if (!searchBar.contains(event.target) && !searchIcon.contains(event.target)) {
-            searchBar.classList.remove('active');
-            searchIcon.style.display = "inline-block";
-            searchCategories(); // Perform the search when closing
-          }
-        });
       function searchCategories() {
     let input = document.getElementById('search').value.toLowerCase();
     let categories = document.getElementsByClassName('category');
