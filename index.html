@@ -177,10 +177,8 @@
                     },
                     body: `request=${encodeURIComponent(request)}`
                 }).then(response => {
-                    if (response.ok) {
-                        alert('Request submitted successfully');
-                    } else {
-                        alert('Failed to submit request');
+                    if (!response.ok) {
+                        console.error('Failed to submit request');
                     }
                 });
                 requestInput.value = '';
