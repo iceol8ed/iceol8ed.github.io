@@ -54,17 +54,17 @@
         }
     </style>
 
-    <<script>
+    <script>
       function searchCategories() {
-    let input = document.getElementById('search').value.toLowerCase();
-    let categories = document.getElementsByClassName('category');
-    let searchWords = input.split(/\s+/);
+        let input = document.getElementById('search').value.toLowerCase();
+        let categories = document.getElementsByClassName('category');
+        let searchWords = input.split(/\s+/);
 
-    for (let i = 0; i < categories.length; i++) {
-        let category = categories[i];
-        let title = category.querySelector('h2'); // Get the category title
-        let paragraphs = category.querySelectorAll('p'); // Get all paragraphs within the category
-        let categoryMatchFound = false; // Flag for the entire category
+        for (let i = 0; i < categories.length; i++) {
+            let category = categories[i];
+            let title = category.querySelector('h2'); // Get the category title
+            let paragraphs = category.querySelectorAll('p'); // Get all paragraphs within the category
+            let categoryMatchFound = false; // Flag for the entire category
 
         // Hide all paragraphs initially
         for (let p of paragraphs) {
