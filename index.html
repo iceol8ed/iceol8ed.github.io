@@ -73,17 +73,58 @@
         .category {
             margin-top: 20px;
         }
+        .suggestions-container {
+            width: 80%; /* Wider container */
+            margin: 20px auto;
+            text-align: center;
+        }
+        .suggestions-input-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-top: 10px; /* Add gap between text and textbox */
+        }
+        .suggestions-input {
+            width: 100%;
+            padding: 5px; /* Shorter height */
+            font-size: 16px;
+            border: 1px solid #a6da95; /* Outline color same as hyperlinks */
+            border-radius: 25px;
+            outline: none;
+            background: transparent;
+            color: white;
+            text-align: center;
+            flex-grow: 1;
+        }
+        .send-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            color: #a6da95; /* Same color as hyperlinks */
+            margin-left: -40px; /* Adjust to avoid covering text */
+        }
+        .send-button img {
+            width: 20px;
+            height: 20px;
+        }
     </style>
 
     <script>
-        let searchTimeout;
+        function toggleSearchBar() {
+            const searchBar = document.getElementById('search');
+            searchBar.classList.toggle('open');
+            if (searchBar.classList.contains('open')) {
+                searchBar.focus();
+            } else {
+                searchBar.value = '';
+            }
+        }
 
         function searchCategories() {
-            clearTimeout(searchTimeout);
             let input = document.getElementById('search').value.toLowerCase();
             let categories = document.getElementsByClassName('category');
             let searchWords = input.split(/\s+/);
-            let resultsFound = false;
 
             for (let i = 0; i < categories.length; i++) {
                 let category = categories[i];
@@ -102,7 +143,6 @@
                         if (text.includes(searchWords[j])) {
                             p.style.display = "block"; // Show matching paragraph
                             categoryMatchFound = true; // Category has at least one match
-                            resultsFound = true;
                         }
                     }
                 }
@@ -114,41 +154,24 @@
                     category.style.display = "none"; // Hide the category if no matches
                 }
             }
-
-            // Show a dialog if no results are found after 3 seconds
-            if (!resultsFound) {
-                searchTimeout = setTimeout(() => {
-                    if (confirm('App not found, do you want to request it?')) {
-                        submitRequest(input);
-                    }
-                    document.getElementById('search').value = ''; // Clear the search input
-                }, 3000);
-            }
         }
 
-        function toggleSearchBar() {
-            const searchBar = document.getElementById('search');
-            searchBar.classList.toggle('open');
-            if (searchBar.classList.contains('open')) {
-                searchBar.focus();
-            } else {
-                searchBar.value = '';
-            }
-        }
-
-        function submitRequest(request) {
-            if (request) {
+        function submitSuggestion() {
+            const suggestionInput = document.getElementById('suggestions-input');
+            const suggestion = suggestionInput.value.toLowerCase().trim();
+            if (suggestion) {
                 fetch('https://script.google.com/macros/s/AKfycbzXX_R0qes0Q9inNRbS9czip7y6O9JZWRo05MoG1mHW3ZlGCXVnVw0VjZD9KPhGqv47TQ/exec', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
                     },
-                    body: `request=${encodeURIComponent(request)}`
+                    body: `suggestion=${encodeURIComponent(suggestion)}`
                 }).then(response => {
                     if (!response.ok) {
-                        console.error('Failed to submit request');
+                        console.error('Failed to submit suggestion');
                     }
                 });
+                suggestionInput.value = '';
             }
         }
 
@@ -163,11 +186,21 @@
 
         document.addEventListener('DOMContentLoaded', function() {
             const searchInput = document.getElementById('search');
-            searchInput.addEventListener('keypress', function(event) {
+            searchInput.addEventListener('keyup', function(event) {
+                searchCategories();
+            });
+
+            const suggestionInput = document.getElementById('suggestions-input');
+            suggestionInput.addEventListener('keypress', function(event) {
                 if (event.key === 'Enter') {
                     event.preventDefault();
-                    searchCategories();
+                    submitSuggestion();
                 }
+            });
+
+            const sendButton = document.querySelector('.send-button');
+            sendButton.addEventListener('click', function() {
+                submitSuggestion();
             });
         });
     </script>
@@ -176,7 +209,7 @@
     <div class="container">
         <h1>awesome software</h1>
         <div class="search-container">
-            <input type="text" id="search" class="search-bar" onkeyup="searchCategories()">
+            <input type="text" id="search" class="search-bar">
             <button class="search-button" onclick="toggleSearchBar()">
                 <img src="https://img.icons8.com/ios-filled/50/ffffff/search.png" alt="Search">
             </button>
@@ -253,6 +286,15 @@
                 <p><a href="https://github.com/dylanaraps/neofetch">Neofetch</a> - A command-line system information tool</p>
                 <p><a href="https://github.com/dylanaraps/cowsay">Cowsay</a> - A configurable talking cow</p>
                 <p><a href="https://github.com/davatorium/rofi">Rofi</a> - A window switcher, application launcher, and dmenu replacement</p>
+            </div>
+        </div>
+        <div class="suggestions-container">
+            <h2>Suggest an app</h2>
+            <div class="suggestions-input-container">
+                <input type="text" id="suggestions-input" class="suggestions-input" placeholder="Type your suggestion">
+                <button class="send-button">
+                    <img src="https://img.icons8.com/ios-filled/50/a6da95/paper-plane.png" alt="Send">
+                </button>
             </div>
         </div>
     </div>
