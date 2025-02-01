@@ -6,7 +6,7 @@
     <title>Sample Website</title>
     <style>
         body {
-            background-color: #36454F;
+            background-color: #36454F; /* Original background color */
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
@@ -15,41 +15,69 @@
             align-items: center;
             color: white;
         }
-        a { color: yellow; text-decoration: none;}
-        .container {
-            width: 60%; /* 100% - 40% padding */
-            padding: 20px;
-            background: transparent;
-            border-radius: 8px;
-            margin-top: 20px;
-        }
-        .container {
-            width: 60%; /* 100% - 40% padding */
-            padding: 20px;
-            background: transparent;
-            border-radius: 8px;
-            margin-top: 20px;
-        }
+        a { color: #a6da95; text-decoration: none;} /* Updated hyperlink color */
         h1 {
             text-align: center;
-
         }
-
-        .search-bar {
+        .container {
+            width: 60%; /* 100% - 40% padding */
+            padding: 20px;
+            background: transparent;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .search-container {
+            position: relative;
             width: 50%;
-            padding: 12px;
-            font-size: 16px;
             margin: 10px auto;
-            display: block;
-            border: none;
+            text-align: center;
+        }
+        .search-bar {
+            width: 0;
+            padding: 12px 12px 12px 40px;
+            font-size: 16px;
+            border: 2px solid transparent;
             border-radius: 25px;
             outline: none;
             background: rgba(255, 255, 255, 0.2);
             color: white;
             text-align: center;
+            transition: width 0.5s ease, border-color 0.5s ease;
+            opacity: 0;
         }
         .search-bar::placeholder {
             color: rgba(255, 255, 255, 0.7);
+            transition: opacity 1s ease;
+            opacity: 0;
+        }
+        .search-bar.open {
+            width: 100%;
+            opacity: 1;
+            text-align: left;
+            border-color: #a6da95; /* Updated border color */
+        }
+        .search-bar.open::placeholder {
+            opacity: 1;
+        }
+        .search-button {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            transition: left 0.5s ease;
+        }
+        .search-bar.open + .search-button {
+            left: 10px;
+            transform: translateY(-50%);
+        }
+        .search-button img {
+            width: 20px;
+            height: 20px;
         }
         .category {
             margin-top: 20px;
@@ -68,40 +96,53 @@
             let paragraphs = category.querySelectorAll('p'); // Get all paragraphs within the category
             let categoryMatchFound = false; // Flag for the entire category
 
-        // Hide all paragraphs initially
-        for (let p of paragraphs) {
-            p.style.display = "none";
-        }
-
-        for (let j = 0; j < searchWords.length; j++) {
+            // Hide all paragraphs initially
             for (let p of paragraphs) {
-                let text = p.innerText.toLowerCase();
-                if (text.includes(searchWords[j])) {
-                    p.style.display = "block"; // Show matching paragraph
-                    categoryMatchFound = true; // Category has at least one match
+                p.style.display = "none";
+            }
+
+            for (let j = 0; j < searchWords.length; j++) {
+                for (let p of paragraphs) {
+                    let text = p.innerText.toLowerCase();
+                    if (text.includes(searchWords[j])) {
+                        p.style.display = "block"; // Show matching paragraph
+                        categoryMatchFound = true; // Category has at least one match
+                    }
                 }
             }
-        }
 
-        if (categoryMatchFound) {
-            title.style.display = "block";  // Show the title if there's a match
-            category.style.display = "block"; // Show the category
-        } else {
-            category.style.display = "none"; // Hide the category if no matches
+            if (categoryMatchFound) {
+                title.style.display = "block";  // Show the title if there's a match
+                category.style.display = "block"; // Show the category
+            } else {
+                category.style.display = "none"; // Hide the category if no matches
+            }
         }
     }
-}
+
+    function toggleSearchBar() {
+        const searchBar = document.getElementById('search');
+        searchBar.classList.toggle('open');
+        if (searchBar.classList.contains('open')) {
+            searchBar.focus();
+        }
+    }
     </script>     
 </head>
 <body>
     <div class="container">
         <h1>awesome software</h1>
-        <input type="text" id="search" class="search-bar" placeholder="Search..." onkeyup="searchCategories()">        
+        <div class="search-container">
+            <input type="text" id="search" class="search-bar" placeholder="Search..." onkeyup="searchCategories()">
+            <button class="search-button" onclick="toggleSearchBar()">
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/search.png" alt="Search">
+            </button>
+        </div>
         <div class="categories">
             <div class="category">
                 <h2>AI</h2>
                 <p><a href="https://chatgpt.com">ChatGPT</a> - AI chatbot by OpenAI</p>
-                <p><a href="https://www.deepseek.com">DeepSeek</a> - FOSS chatbot by DeepSeek</p>
+                <p><a href="https://www.deepseek.com">DeepSeek</a> - AI-powered search engine</p>
                 <p><a href="https://ollama.com">Ollama</a> - AI platform for building and deploying models</p>
                 <p><a href="https://github.com/open-webui/open-webui">Open WebUI</a> - Open-source web-based user interface for AI models</p>
             </div>
@@ -118,8 +159,9 @@
                 <p><a href="https://github.com/uazo/cromite">Cromite</a> - Mobile browser with support for Chrome extensions</p>
             </div>
             <div class="category">
-                <h2>File Compression/Uncompression</h2>
+                <h2>File Management</h2>
                 <p><a href="https://www.7-zip.org">7-Zip</a> - File archiver with a high compression ratio</p>
+                <p><a href="https://localsend.org">LocalSend</a> - Cross-platform file sharing app</p>
                 <p><a href="https://apps.apple.com/us/app/the-unarchiver/id425424353?mt=12">The Unarchiver</a> - Unarchive many different kinds of archive files</p>
             </div>
             <div class="category">
@@ -136,7 +178,7 @@
                 <p><a href="https://github.com/mostafaalagamy/Metrolist">Metrolist</a> - Music discovery and playlist management tool</p>
                 <p><a href="https://nicotine-plus.org">Nicotine+</a> - Free and open-source music sharing client</p>
                 <p><a href="https://github.com/SpotX-Official/SpotX">SpotX</a> - Ad blocker and more for Spotify on Windows</p>
-                <p><a href="https://github.com/SpotX-Official/SpotX-Bash">SpotX-Bash</a> - Ad blocker and more for Spotify on macOS and Linux</p>
+                <p><a href="https://github.com/SpotX-Official/SpotX-Bash">SpotX (macOS and Linux)</a> - Ad blocker and more for Spotify on macOS and Linux</p>
             </div>
             <div class="category">
                 <h2>Productivity</h2>
