@@ -35,13 +35,15 @@
           margin-bottom: 10px; /* Add some space below the search bar */
         }
 
-
-        .search-icon {
-          cursor: pointer;
-          font-size: 2em; /* Adjust size as needed */
-          color: white;
-          transition: transform 0.3s ease; /* Smooth scaling on hover */
-        }
+       .search-icon {
+        cursor: pointer;
+        font-size: 2em;
+        color: white;
+        transition: transform 0.3s ease;
+        display: flex; /* Make sure the icon is visible */
+        align-items: center; /* Vertically center the icon */
+        justify-content: center; /* Horizontally center the icon */
+      }     
 
         .search-icon:hover {
           transform: scale(1.1); /* Slightly enlarge on hover */
