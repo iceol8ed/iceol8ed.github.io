@@ -15,6 +15,14 @@
             align-items: center;
             color: white;
         }
+        a { color: yellow; text-decoration: none;}
+        .container {
+            width: 60%; /* 100% - 40% padding */
+            padding: 20px;
+            background: transparent;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
         .container {
             width: 60%; /* 100% - 40% padding */
             padding: 20px;
@@ -45,23 +53,35 @@
             margin-top: 20px;
         }
     </style>
-    <script>
-        function searchCategories() {
-            let input = document.getElementById('search').value.toLowerCase();
-            let categories = document.getElementsByClassName('category');
-            
-            for (let i = 0; i < categories.length; i++) {
-                let category = categories[i];
-                let text = category.innerText.toLowerCase();
-                
-                if (text.includes(input)) {
-                    category.style.display = "block";
-                } else {
-                    category.style.display = "none";
-                }
+   <script>
+    function searchCategories() {
+    let input = document.getElementById('search').value.toLowerCase();
+    let categories = document.getElementsByClassName('category');
+
+    // Split the input into individual words
+    let searchWords = input.split(/\s+/); // Split by any whitespace
+
+    for (let i = 0; i < categories.length; i++) {
+        let category = categories[i];
+        let text = category.innerText.toLowerCase();
+        let matchFound = false; // Flag to track if ANY word matched
+
+        // Check if ANY of the search words are in the category text
+        for (let j = 0; j < searchWords.length; j++) {
+            if (text.includes(searchWords[j])) {
+                matchFound = true;
+                break; // No need to check further if a match is found
             }
         }
-    </script>
+
+        if (matchFound) {
+            category.style.display = "block";
+        } else {
+            category.style.display = "none";
+        }
+    }
+}  
+    </script> 
 </head>
 <body>
     <div class="container">
