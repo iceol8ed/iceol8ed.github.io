@@ -73,63 +73,105 @@
         .category {
             margin-top: 20px;
         }
+        .request-container {
+            width: 50%;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .request-input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            outline: none;
+            background: #fff;
+            color: #000;
+            text-align: center;
+        }
     </style>
 
     <script>
-      function searchCategories() {
-        let input = document.getElementById('search').value.toLowerCase();
-        let categories = document.getElementsByClassName('category');
-        let searchWords = input.split(/\s+/);
+        function searchCategories() {
+            let input = document.getElementById('search').value.toLowerCase();
+            let categories = document.getElementsByClassName('category');
+            let searchWords = input.split(/\s+/);
 
-        for (let i = 0; i < categories.length; i++) {
-            let category = categories[i];
-            let title = category.querySelector('h2'); // Get the category title
-            let paragraphs = category.querySelectorAll('p'); // Get all paragraphs within the category
-            let categoryMatchFound = false; // Flag for the entire category
+            for (let i = 0; i < categories.length; i++) {
+                let category = categories[i];
+                let title = category.querySelector('h2'); // Get the category title
+                let paragraphs = category.querySelectorAll('p'); // Get all paragraphs within the category
+                let categoryMatchFound = false; // Flag for the entire category
 
-            // Hide all paragraphs initially
-            for (let p of paragraphs) {
-                p.style.display = "none";
-            }
-
-            for (let j = 0; j < searchWords.length; j++) {
+                // Hide all paragraphs initially
                 for (let p of paragraphs) {
-                    let text = p.innerText.toLowerCase();
-                    if (text.includes(searchWords[j])) {
-                        p.style.display = "block"; // Show matching paragraph
-                        categoryMatchFound = true; // Category has at least one match
+                    p.style.display = "none";
+                }
+
+                for (let j = 0; j < searchWords.length; j++) {
+                    for (let p of paragraphs) {
+                        let text = p.innerText.toLowerCase();
+                        if (text.includes(searchWords[j])) {
+                            p.style.display = "block"; // Show matching paragraph
+                            categoryMatchFound = true; // Category has at least one match
+                        }
                     }
                 }
-            }
 
-            if (categoryMatchFound) {
-                title.style.display = "block";  // Show the title if there's a match
-                category.style.display = "block"; // Show the category
+                if (categoryMatchFound) {
+                    title.style.display = "block";  // Show the title if there's a match
+                    category.style.display = "block"; // Show the category
+                } else {
+                    category.style.display = "none"; // Hide the category if no matches
+                }
+            }
+        }
+
+        function toggleSearchBar() {
+            const searchBar = document.getElementById('search');
+            searchBar.classList.toggle('open');
+            if (searchBar.classList.contains('open')) {
+                searchBar.focus();
             } else {
-                category.style.display = "none"; // Hide the category if no matches
+                searchBar.value = '';
             }
         }
-    }
 
-    function toggleSearchBar() {
-        const searchBar = document.getElementById('search');
-        searchBar.classList.toggle('open');
-        if (searchBar.classList.contains('open')) {
-            searchBar.focus();
-        } else {
-            searchBar.value = '';
-        }
-    }
+        document.addEventListener('click', function(event) {
+            const searchBar = document.getElementById('search');
+            const searchButton = document.querySelector('.search-button');
+            if (!searchButton.contains(event.target) && !searchBar.contains(event.target)) {
+                searchBar.classList.remove('open');
+                searchBar.value = '';
+            }
+        });
 
-    document.addEventListener('click', function(event) {
-        const searchBar = document.getElementById('search');
-        const searchButton = document.querySelector('.search-button');
-        if (!searchButton.contains(event.target) && !searchBar.contains(event.target)) {
-            searchBar.classList.remove('open');
-            searchBar.value = '';
-        }
-    });
-    </script>     
+        document.addEventListener('DOMContentLoaded', function() {
+            const requestInput = document.getElementById('request-input');
+            requestInput.addEventListener('keypress', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    const request = requestInput.value.toLowerCase().trim();
+                    if (request) {
+                        fetch('https://script.google.com/macros/s/AKfycbzXX_R0qes0Q9inNRbS9czip7y6O9JZWRo05MoG1mHW3ZlGCXVnVw0VjZD9KPhGqv47TQ/exec', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded',
+                            },
+                            body: `request=${encodeURIComponent(request)}`
+                        }).then(response => {
+                            if (response.ok) {
+                                alert('Request submitted successfully');
+                            } else {
+                                alert('Failed to submit request');
+                            }
+                        });
+                        requestInput.value = '';
+                    }
+                }
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="container">
@@ -209,6 +251,10 @@
                 <p><a href="https://apps.microsoft.com/detail/9pf4kz2vn4w9?rtc=1&hl=el-GR&gl=GR">TranslucentTB</a> - Customize the appearance of your taskbar</p>
                 <p><a href="https://github.com/microsoft/PowerToys">PowerToys</a> - Utility tools for Windows</p>
             </div>
+        </div>
+        <div class="request-container">
+            <h2>request more apps</h2>
+            <input type="text" id="request-input" class="request-input" placeholder="Type your request and press Enter">
         </div>
     </div>
 </body>
