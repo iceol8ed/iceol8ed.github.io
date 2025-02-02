@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>awesome</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
     <style>
@@ -33,16 +33,7 @@
             text-decoration: none;
         }
 
-        a:hover {
-            color: var(--matcha-light);
-        }
-
-        h1 {
-            text-align: center;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 3.5em;
-            letter-spacing: -1px;
-            margin-bottom: 40px;
+        a:hover, a:focus {
             color: var(--matcha-light);
         }
 
@@ -139,8 +130,8 @@
                 <li><img src="https://img.icons8.com/ios-filled/50/ffffff/settings.png" alt="Utilities Icon" width="20"><a href="#utilities">Utilities</a></li>
             </ul>
         </div>
-        <div class="categories">
-            <div class="category" id="ai">
+        <section class="categories">
+            <section class="category" id="ai">
                 <h2>AI</h2>
                 <p><a href="https://chatgpt.com">ChatGPT</a> - AI chatbot by OpenAI</p>
                 <p><a href="https://github.com/features/copilot">Copilot</a> - AI pair programmer by GitHub</p>
@@ -148,22 +139,22 @@
                 <p><a href="https://ollama.com">Ollama</a> - AI platform for building and deploying models</p>
                 <p><a href="https://github.com/open-webui/open-webui">Open WebUI</a> - Open-source web-based user interface for AI models</p>
                 <p><a href="https://www.perplexity.ai">Perplexity</a> - AI-powered search engine with real-time information</p>
-            </div>
-            <div class="category" id="anime-manga">
+            </section>
+            <section class="category" id="anime-manga">
                 <h2>Anime / Manga</h2>
                 <p><a href="https://github.com/pystardust/ani-cli">ani-cli</a> - A CLI tool to stream and download anime</p>
                 <p><a href="https://anilist.co">AniList</a> - Social anime and manga database and tracking platform</p>
                 <p><a href="https://mangadex.org">MangaDex</a> - Manga reading platform with a vast library and active community</p>
                 <p><a href="https://www.miruro.tv">Miruro</a> - Ad-free anime streaming platform with a clean interface and extensive collection</p>
-            </div>
-            <div class="category" id="browsers">
+            </section>
+            <section class="category" id="browsers">
                 <h2>Browsers</h2>
                 <p><a href="https://arc.net">Arc</a> - A new, aesthetically pleasing browser</p>
                 <p><a href="https://brave.com">Brave</a> - Chromium-based browser with built in adblocker</p>
                 <p><a href="https://github.com/uazo/cromite">Cromite</a> - Mobile browser with support for Chrome extensions</p>
                 <p><a href="https://thorium.rocks">Thorium</a> - A Chromium-based browser with extra features</p>
-            </div>
-            <div class="category" id="coding">
+            </section>
+            <section class="category" id="coding">
                 <h2>Coding</h2>
                 <p><a href="https://www.codewars.com">Codewars</a> - Platform to improve coding skills through challenges</p>
                 <p><a href="https://cs50.harvard.edu/x">CS50x</a> - Harvard University's introduction to computer science</p>
@@ -173,14 +164,14 @@
                 <p><a href="https://neovim.io/">Neovim</a> - Hyperextensible Vim-based text editor</p>
                 <p><a href="https://stackoverflow.com">Stack Overflow</a> - Q&A community for programmers</p>
                 <p><a href="https://code.visualstudio.com">Visual Studio Code</a> - Powerful and extensible code editor</p>
-            </div>
-            <div class="category" id="file-management">
+            </section>
+            <section class="category" id="file-management">
                 <h2>File Management</h2>
                 <p><a href="https://www.7-zip.org">7-Zip</a> - File archiver with a high compression ratio</p>
                 <p><a href="https://localsend.org">LocalSend</a> - Cross-platform file sharing app</p>
                 <p><a href="https://apps.apple.com/us/app/the-unarchiver/id425424353?mt=12">The Unarchiver</a> - Unarchive many different kinds of archive files</p>
-            </div>
-            <div class="category" id="gaming">
+            </section>
+            <section class="category" id="gaming">
                 <h2>Gaming</h2>
                 <p><a href="https://emulationstation.org">EmulationStation</a> - Graphical front-end for emulators</p>
                 <p><a href="https://openemu.org">OpenEmu</a> - Open-source multi-system game emulator for macOS</p>
@@ -188,22 +179,22 @@
                 <p><a href="https://playnite.link">Playnite</a> - Open-source video game library manager</p>
                 <p><a href="https://fitgirl-repacks.site">FitGirl Repacks</a> - Repacked games with smaller file sizes</p>
                 <p><a href="https://steamunlocked.net">SteamUnlocked</a> - Free pre-installed games</p>
-            </div>
-            <div class="category" id="media-players">
+            </section>
+            <section class="category" id="media-players">
                 <h2>Media Players</h2>
                 <p><a href="https://mpv.io">mpv</a> - Free, open-source, and cross-platform media player</p>
                 <p><a href="https://github.com/iina/iina">IINA</a> - Modern media player for macOS</p>
                 <p><a href="https://www.videolan.org/vlc/">VLC</a> - Open-source cross-platform multimedia player</p>
-            </div>
-            <div class="category" id="movies-tv-shows">
+            </section>
+            <section class="category" id="movies-tv-shows">
                 <h2>Movies / TV Shows</h2>
                 <p><a href="https://github.com/recloudstream/cloudstream">Cloudstream</a> - Streaming app for movies and TV shows</p>
                 <p><a href="https://www.stremio.com">Stremio</a> - Media center for streaming movies and TV shows</p>
                 <p><a href="https://torrentio.strem.fun">Torrentio</a> - Torrentio addon for Stremio</p>
                 <p><a href="https://www.1337xx.to">1337x</a> - Torrent site for movies, TV shows, games, and more</p>
                 <p><a href="https://www.subs4free.club">Subs4Free</a> - Greek subtitles for movies and TV shows</p>
-            </div>
-            <div class="category" id="music">
+            </section>
+            <section class="category" id="music">
                 <h2>Music</h2>
                 <p><a href="https://librescore.org">LibreScore</a> - Open-source music notation software</p>
                 <p><a href="https://github.com/mostafaalagamy/Metrolist">Metrolist</a> - Music discovery and playlist management tool</p>
@@ -212,8 +203,8 @@
                 <p><a href="https://github.com/SpotX-Official/SpotX">SpotX</a> - Ad blocker and more for Spotify on Windows</p>
                 <p><a href="https://github.com/SpotX-Official/SpotX-Bash">SpotX-Bash</a> - Ad blocker and more for Spotify on macOS and Linux</p>
                 <p><a href="https://xmanagerapp.com">Xmanager</a> - Download patched Spotify for Android</p>
-            </div>
-            <div class="category" id="productivity">
+            </section>
+            <section class="category" id="productivity">
                 <h2>Productivity</h2>
                 <p><a href="https://www.alfredapp.com">Alfred</a> - Productivity application for macOS</p>
                 <p><a href="https://apps.apple.com/us/app/amphetamine/id937984704?mt=12">Amphetamine</a> - Keep your Mac awake</p>
@@ -222,8 +213,8 @@
                 <p><a href="https://github.com/FelixKratz/SketchyBar">SketchyBar</a> - Highly customizable macOS status bar replacement</p>
                 <p><a href="https://github.com/koekeishiya/skhd">skhd</a> - Simple hotkey daemon for macOS</p>
                 <p><a href="https://github.com/koekeishiya/yabai">yabai</a> - Tiling window manager for macOS</p>
-            </div>
-            <div class="category" id="utilities">
+            </section>
+            <section class="category" id="utilities">
                 <h2>Utilities</h2>
                 <p><a href="https://github.com/odlp/bluesnooze">BlueSnooze</a> - Bluetooth sleep management for macOS</p>
                 <p><a href="https://github.com/dylanaraps/cowsay">Cowsay</a> - A configurable talking cow</p>
@@ -240,8 +231,8 @@
                 <p><a href="https://i3wm.org/">i3</a> - Tiling window manager</p>
                 <p><a href="https://github.com/dylanaraps/neofetch">Neofetch</a> - A command-line system information tool</p>
                 <p><a href="https://www.gimp.org">GIMP</a> - Free and open-source image editor</p>
-            </div>
-        </div>
+            </section>
+        </section>
     </div>
     <script>
         document.querySelectorAll('.toc a').forEach(anchor => {
@@ -252,14 +243,9 @@
                 
                 targetElement.scrollIntoView({
                     behavior: 'smooth',
-                    block: 'start'
+                    block: 'nearest'
                 });
             });
-        });
-
-        document.addEventListener('contextmenu', event => {
-            event.preventDefault();
-            return false;
         });
     </script>
 </body>
