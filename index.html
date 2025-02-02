@@ -14,6 +14,7 @@
             flex-direction: column;
             align-items: center;
             color: white;
+            scroll-behavior: smooth; /* Added smooth scrolling */
         }
         a { color: #a6da95; text-decoration: none;} /* Updated hyperlink color */
         h1 {
@@ -29,6 +30,28 @@
         .category {
             margin-top: 20px;
         }
+        .toc {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(50, 50, 50, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        .toc ul {
+            list-style: none;
+            padding: 0;
+        }
+        .toc ul li {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+        .toc ul li img {
+            margin-right: 10px;
+        }
         /* Removed search-related styles */
     </style>
     <!-- Removed search-related scripts -->
@@ -36,35 +59,49 @@
 <body>
     <div class="container">
         <h1>awesome software</h1>
+        <div class="toc">
+            <ul>
+                <li><img src="icons/ai.png" alt="AI Icon" width="20"><a href="#ai">AI</a></li>
+                <li><img src="icons/anime.png" alt="Anime Icon" width="20"><a href="#anime-manga">Anime / Manga</a></li>
+                <li><img src="icons/browser.png" alt="Browser Icon" width="20"><a href="#browsers">Browsers</a></li>
+                <li><img src="icons/file.png" alt="File Icon" width="20"><a href="#file-management">File Management</a></li>
+                <li><img src="icons/gaming.png" alt="Gaming Icon" width="20"><a href="#gaming">Gaming</a></li>
+                <li><img src="icons/media.png" alt="Media Icon" width="20"><a href="#media-players">Media Players</a></li>
+                <li><img src="icons/movies.png" alt="Movies Icon" width="20"><a href="#movies-tv-shows">Movies / TV Shows</a></li>
+                <li><img src="icons/music.png" alt="Music Icon" width="20"><a href="#music">Music</a></li>
+                <li><img src="icons/productivity.png" alt="Productivity Icon" width="20"><a href="#productivity">Productivity</a></li>
+                <li><img src="icons/utilities.png" alt="Utilities Icon" width="20"><a href="#utilities">Utilities</a></li>
+            </ul>
+        </div>
         <!-- Removed search-container -->
         <div class="categories">
-            <div class="category">
+            <div class="category" id="ai">
                 <h2>AI</h2>
                 <p><a href="https://chatgpt.com">ChatGPT</a> - AI chatbot by OpenAI</p>
                 <p><a href="https://www.deepseek.com">DeepSeek</a> - Free and open-source AI chatbot with reasoning capabilities</p>
                 <p><a href="https://ollama.com">Ollama</a> - AI platform for building and deploying models</p>
                 <p><a href="https://github.com/open-webui/open-webui">Open WebUI</a> - Open-source web-based user interface for AI models</p>
             </div>
-            <div class="category">
+            <div class="category" id="anime-manga">
                 <h2>Anime / Manga</h2>
                 <p><a href="https://github.com/pystardust/ani-cli">ani-cli</a> - A CLI tool to stream and download anime</p>
                 <p><a href="https://mangadex.org">MangaDex</a> - Best manga website</p>
                 <p><a href="https://www.miruro.tv">Miruro</a> - Best anime streaming website</p>
             </div>
-            <div class="category">
+            <div class="category" id="browsers">
                 <h2>Browsers</h2>
                 <p><a href="https://arc.net">Arc</a> - A new, aesthetically pleasing browser</p>
                 <p><a href="https://brave.com">Brave</a> - Chromium-based browser with built in adblocker</p>
                 <p><a href="https://github.com/uazo/cromite">Cromite</a> - Mobile browser with support for Chrome extensions</p>
                 <p><a href="https://thorium.rocks">Thorium</a> - A Chromium-based browser with extra features</p>
             </div>
-            <div class="category">
+            <div class="category" id="file-management">
                 <h2>File Management</h2>
                 <p><a href="https://www.7-zip.org">7-Zip</a> - File archiver with a high compression ratio</p>
                 <p><a href="https://localsend.org">LocalSend</a> - Cross-platform file sharing app</p>
                 <p><a href="https://apps.apple.com/us/app/the-unarchiver/id425424353?mt=12">The Unarchiver</a> - Unarchive many different kinds of archive files</p>
             </div>
-            <div class="category">
+            <div class="category" id="gaming">
                 <h2>Gaming</h2>
                 <p><a href="https://emulationstation.org">EmulationStation</a> - Graphical front-end for emulators</p>
                 <p><a href="https://openemu.org">OpenEmu</a> - Open-source multi-system game emulator for macOS</p>
@@ -73,19 +110,20 @@
                 <p><a href="https://fitgirl-repacks.site">FitGirl Repacks</a> - Repacked games with smaller file sizes</p>
                 <p><a href="https://steamunlocked.net">SteamUnlocked</a> - Free pre-installed games</p>
             </div>
-            <div class="category">
+            <div class="category" id="media-players">
                 <h2>Media Players</h2>
                 <p><a href="https://github.com/iina/iina">IINA</a> - Modern media player for macOS</p>
                 <p><a href="https://www.videolan.org/vlc/">VLC</a> - Open-source cross-platform multimedia player</p>
             </div>
-            <div class="category">
+            <div class="category" id="movies-tv-shows">
                 <h2>Movies / TV Shows</h2>
                 <p><a href="https://github.com/recloudstream/cloudstream">Cloudstream</a> - Streaming app for movies and TV shows</p>
                 <p><a href="https://www.stremio.com">Stremio</a> - Media center for streaming movies and TV shows</p>
                 <p><a href="https://torrentio.strem.fun">Torrentio</a> - Torrentio addon for Stremio</p>
                 <p><a href="https://www.1337xx.to">1337x</a> - Torrent site for movies, TV shows, games, and more</p>
+                <p><a href="https://www.subs4free.club">Subs4Free</a> - Greek subtitles for movies and TV shows</p>
             </div>
-            <div class="category">
+            <div class="category" id="music">
                 <h2>Music</h2>
                 <p><a href="https://librescore.org">LibreScore</a> - Open-source music notation software</p>
                 <p><a href="https://github.com/mostafaalagamy/Metrolist">Metrolist</a> - Music discovery and playlist management tool</p>
@@ -94,7 +132,7 @@
                 <p><a href="https://github.com/SpotX-Official/SpotX-Bash">SpotX-Bash</a> - Ad blocker and more for Spotify on macOS and Linux</p>
                 <p><a href="https://xmanagerapp.com">Xmanager</a> - Download patched Spotify for Android</p>
             </div>
-            <div class="category">
+            <div class="category" id="productivity">
                 <h2>Productivity</h2>
                 <p><a href="https://www.alfredapp.com">Alfred</a> - Productivity application for macOS</p>
                 <p><a href="https://apps.apple.com/us/app/amphetamine/id937984704?mt=12">Amphetamine</a> - Keep your Mac awake</p>
@@ -104,7 +142,7 @@
                 <p><a href="https://github.com/koekeishiya/skhd">skhd</a> - Simple hotkey daemon for macOS</p>
                 <p><a href="https://github.com/koekeishiya/yabai">yabai</a> - Tiling window manager for macOS</p>
             </div>
-            <div class="category">
+            <div class="category" id="utilities">
                 <h2>Utilities</h2>
                 <p><a href="https://github.com/odlp/bluesnooze">BlueSnooze</a> - Bluetooth sleep management for macOS</p>
                 <p><a href="https://github.com/dylanaraps/cowsay">Cowsay</a> - A configurable talking cow</p>
