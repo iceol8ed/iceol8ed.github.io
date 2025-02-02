@@ -92,6 +92,7 @@
         }
         .toc ul li a {
             color: var(--matcha-light);
+            transition: color 0.8s ease;
         }
 
         .toc ul li a:hover {
@@ -129,6 +130,7 @@
                 <li><img src="https://img.icons8.com/ios-filled/50/ffffff/artificial-intelligence.png" alt="AI Icon" width="20"><a href="#ai">AI</a></li>
                 <li><img src="https://img.icons8.com/ios-filled/50/ffffff/sushi.png" alt="Anime Icon" width="20"><a href="#anime-manga">Anime / Manga</a></li>
                 <li><img src="https://img.icons8.com/ios-filled/50/ffffff/internet-browser.png" alt="Browser Icon" width="20"><a href="#browsers">Browsers</a></li>
+                <li><img src="https://img.icons8.com/ios-filled/50/ffffff/code.png" alt="Code Icon" width="20"><a href="#coding">Coding</a></li>
                 <li><img src="https://img.icons8.com/ios-filled/50/ffffff/file.png" alt="File Icon" width="20"><a href="#file-management">File Management</a></li>
                 <li><img src="https://img.icons8.com/ios-filled/50/ffffff/controller.png" alt="Gaming Icon" width="20"><a href="#gaming">Gaming</a></li>
                 <li><img src="https://img.icons8.com/ios-filled/50/ffffff/video.png" alt="Media Icon" width="20"><a href="#media-players">Media Players</a></li>
@@ -159,6 +161,17 @@
                 <p><a href="https://github.com/uazo/cromite">Cromite</a> - Mobile browser with support for Chrome extensions</p>
                 <p><a href="https://thorium.rocks">Thorium</a> - A Chromium-based browser with extra features</p>
             </div>
+            <div class="category" id="coding">
+                <h2>Coding</h2>
+                <p><a href="https://www.codewars.com">Codewars</a> - Platform to improve coding skills through challenges</p>
+                <p><a href="https://cs50.harvard.edu/x">CS50x</a> - Harvard University's introduction to computer science</p>
+                <p><a href="https://www.docker.com">Docker</a> - Platform for developing, shipping, and running applications</p>
+                <p><a href="https://www.freecodecamp.org">freeCodeCamp</a> - Free coding curriculum and certifications</p>
+                <p><a href="https://github.com">GitHub</a> - Code hosting, collaboration and version control platform</p>
+                <p><a href="https://neovim.io/">Neovim</a> - Hyperextensible Vim-based text editor</p>
+                <p><a href="https://stackoverflow.com">Stack Overflow</a> - Q&A community for programmers</p>
+                <p><a href="https://code.visualstudio.com">Visual Studio Code</a> - Powerful and extensible code editor</p>
+            </div>
             <div class="category" id="file-management">
                 <h2>File Management</h2>
                 <p><a href="https://www.7-zip.org">7-Zip</a> - File archiver with a high compression ratio</p>
@@ -176,6 +189,7 @@
             </div>
             <div class="category" id="media-players">
                 <h2>Media Players</h2>
+                <p><a href="https://mpv.io">mpv</a> - Free, open-source, and cross-platform media player</p>
                 <p><a href="https://github.com/iina/iina">IINA</a> - Modern media player for macOS</p>
                 <p><a href="https://www.videolan.org/vlc/">VLC</a> - Open-source cross-platform multimedia player</p>
             </div>
@@ -212,7 +226,6 @@
                 <p><a href="https://github.com/dylanaraps/cowsay">Cowsay</a> - A configurable talking cow</p>
                 <p><a href="https://github.com/davatorium/rofi">Rofi</a> - A window switcher, application launcher, and dmenu replacement</p>
                 <p><a href="https://sw.kovidgoyal.net/kitty/">Kitty</a> - Fast, feature-rich, GPU-based terminal emulator</p>
-                <p><a href="https://neovim.io/">Neovim</a> - Hyperextensible Vim-based text editor</p>
                 <p><a href="https://www.progressivedownloader.com">Progressive Downloader</a> - Advanced download manager for macOS</p>
                 <p><a href="https://www.qbittorrent.org">qBittorrent</a> - Free and reliable P2P BitTorrent client</p>
                 <p><a href="https://github.com/christitus/windows-tool">Titus Windows Tool</a> - Windows utility tool</p>
@@ -223,9 +236,22 @@
                 <p><a href="https://i3wm.org/">i3</a> - Tiling window manager</p>
                 <p><a href="https://github.com/dylanaraps/neofetch">Neofetch</a> - A command-line system information tool</p>
                 <p><a href="https://www.gimp.org">GIMP</a> - Free and open-source image editor</p>
-                <p><a href="https://www.docker.com">Docker</a> - Platform for developing, shipping, and running applications</p>
             </div>
         </div>
     </div>
+    <script>
+        document.querySelectorAll('.toc a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
