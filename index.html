@@ -4,22 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sample Website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --matcha-dark: #1b2021;
+            --matcha-green: #86A789;
+            --matcha-light: #D2E3C8;
+            --matcha-cream: #EBF3E8;
+            --matcha-shadow: rgba(27, 32, 33, 0.2);
+        }
+
         body {
-            background-color: #36454F;
-            font-family: Arial, sans-serif;
+            background-color: var(--matcha-dark);
+            font-family: 'Space Grotesk', sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            color: white;
+            color: var(--matcha-cream);
             scroll-behavior: smooth;
         }
-        a { color: #a6da95; text-decoration: none;}
+
+        a { 
+            color: var(--matcha-green); 
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: var(--matcha-light);
+        }
+
         h1 {
             text-align: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5em;
+            letter-spacing: -1px;
+            margin-bottom: 40px;
+            color: var(--matcha-light);
         }
+
         .container {
             width: 60%;
             padding: 20px;
@@ -34,11 +60,12 @@
             margin-top: 20px;
             margin-bottom: 40px;
             padding: 20px 0;
-            background: rgba(50, 50, 50, 0.8);
+            background: rgba(134, 167, 137, 0.1);
             backdrop-filter: blur(10px);
             border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             width: 100%;
+            border: 1px solid var(--matcha-green);
         }
         .toc ul {
             list-style: none;
@@ -58,11 +85,45 @@
             margin-right: 10px;
             color: #ffffff;
         }
+        .category h2 {
+            color: var(--matcha-green);
+            border-bottom: 2px solid var(--matcha-green);
+            padding-bottom: 8px;
+        }
+        .toc ul li a {
+            color: var(--matcha-light);
+        }
+
+        .toc ul li a:hover {
+            color: var(--matcha-cream);
+        }
+
+        .title-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .title-container h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5em;
+            letter-spacing: -1px;
+            margin: 0;
+            line-height: 1;
+        }
+        
+        .title-container .subtitle {
+            font-size: 2.5em;
+            margin-top: 0;
+            opacity: 0.9;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>awesome software</h1>
+        <div class="title-container">
+            <h1>awesome</h1>
+            <h1 class="subtitle">software</h1>
+        </div>
         <div class="toc">
             <ul>
                 <li><img src="https://img.icons8.com/ios-filled/50/ffffff/artificial-intelligence.png" alt="AI Icon" width="20"><a href="#ai">AI</a></li>
@@ -88,8 +149,8 @@
             <div class="category" id="anime-manga">
                 <h2>Anime / Manga</h2>
                 <p><a href="https://github.com/pystardust/ani-cli">ani-cli</a> - A CLI tool to stream and download anime</p>
-                <p><a href="https://mangadex.org">MangaDex</a> - Best manga website</p>
-                <p><a href="https://www.miruro.tv">Miruro</a> - Best anime streaming website</p>
+                <p><a href="https://mangadex.org">MangaDex</a> - Manga reading platform with a vast library and active community</p>
+                <p><a href="https://www.miruro.tv">Miruro</a> - Ad-free anime streaming platform with a clean interface and extensive collection</p>
             </div>
             <div class="category" id="browsers">
                 <h2>Browsers</h2>
