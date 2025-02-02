@@ -108,6 +108,30 @@
             margin-top: 0;
             opacity: 0.9;
         }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.8em;
+            opacity: 0.06;
+            transition: opacity 0.3s ease;
+        }
+        .footer:hover {
+            opacity: 1;
+        }
+
+        .footer-hidden {
+            text-align: center;
+            padding: 5px;
+            margin-top: 5px;
+            font-size: 0.7em;
+            opacity: 0.0001;
+            transition: opacity 0.3s ease;
+        }
+        .footer-hidden:hover {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -233,6 +257,12 @@
                 <p><a href="https://www.gimp.org">GIMP</a> - Free and open-source image editor</p>
             </section>
         </section>
+        <div class="footer">
+            Icons by <a href="https://icons8.com">Icons8</a>
+        </div>
+        <div class="footer-hidden">
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Έχεις δίκιο, Γιάννη</a>
+        </div>
     </div>
     <script>
         document.querySelectorAll('.toc a').forEach(anchor => {
