@@ -1,284 +1,576 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>awesome</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        :root {
-            --matcha-dark: #1b2021;
-            --matcha-green: #86A789;
-            --matcha-light: #D2E3C8;
-            --matcha-cream: #EBF3E8;
-            --matcha-shadow: rgba(27, 32, 33, 0.2);
-        }
+      :root {
+        --matcha-dark: #1b2021;
+        --matcha-green: #86a789;
+        --matcha-light: #d2e3c8;
+        --matcha-cream: #ebf3e8;
+        --matcha-shadow: rgba(27, 32, 33, 0.2);
+      }
 
-        body {
-            background-color: var(--matcha-dark);
-            font-family: 'Space Grotesk', sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: var(--matcha-cream);
-            scroll-behavior: smooth;
-        }
+      body {
+        background-color: var(--matcha-dark);
+        font-family: "Space Grotesk", sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: var(--matcha-cream);
+        scroll-behavior: smooth;
+      }
 
-        a { 
-            color: var(--matcha-green); 
-            text-decoration: none;
-        }
+      a {
+        color: var(--matcha-green);
+        text-decoration: none;
+      }
 
-        a:hover, a:focus {
-            color: var(--matcha-light);
-        }
+      a:hover,
+      a:focus {
+        color: var(--matcha-light);
+      }
 
-        .container {
-            width: 60%;
-            padding: 20px;
-            background: transparent;
-            border-radius: 8px;
-            margin-top: 20px;
-        }
-        .category {
-            margin-top: 20px;
-        }
-        .toc {
-            margin-top: 20px;
-            margin-bottom: 40px;
-            padding: 20px 0;
-            background: rgba(134, 167, 137, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            border: 1px solid var(--matcha-green);
-        }
-        .toc ul {
-            list-style: none;
-            padding: 0 20px;
-            margin: 0;
-        }
-        .toc ul li {
-            margin: 10px 0;
-            display: flex;
-            align-items: center;
-        }
-        .toc ul li img {
-            margin-right: 10px;
-        }
-        .toc ul li span.kanji {
-            font-size: 20px;
-            margin-right: 10px;
-            color: #ffffff;
-        }
-        .category h2 {
-            color: var(--matcha-green);
-            border-bottom: 2px solid var(--matcha-green);
-            padding-bottom: 8px;
-        }
-        .toc ul li a {
-            color: var(--matcha-light);
-            transition: color 0.8s ease;
-        }
+      .container {
+        width: 60%;
+        padding: 20px;
+        background: transparent;
+        border-radius: 8px;
+        margin-top: 20px;
+      }
+      .category {
+        margin-top: 20px;
+      }
+      .toc {
+        margin-top: 20px;
+        margin-bottom: 40px;
+        padding: 20px 0;
+        background: rgba(134, 167, 137, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        border: 1px solid var(--matcha-green);
+      }
+      .toc ul {
+        list-style: none;
+        padding: 0 20px;
+        margin: 0;
+      }
+      .toc ul li {
+        margin: 10px 0;
+        display: flex;
+        align-items: center;
+      }
+      .toc ul li img {
+        margin-right: 10px;
+      }
+      .toc ul li span.kanji {
+        font-size: 20px;
+        margin-right: 10px;
+        color: #ffffff;
+      }
+      .category h2 {
+        color: var(--matcha-green);
+        border-bottom: 2px solid var(--matcha-green);
+        padding-bottom: 8px;
+      }
+      .toc ul li a {
+        color: var(--matcha-light);
+        transition: color 0.8s ease;
+      }
 
-        .toc ul li a:hover {
-            color: var(--matcha-cream);
-        }
+      .toc ul li a:hover {
+        color: var(--matcha-cream);
+      }
 
-        .title-container {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .title-container h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 3.5em;
-            letter-spacing: -1px;
-            margin: 0;
-            line-height: 1;
-        }
-        
-        .title-container .subtitle {
-            font-size: 2.5em;
-            margin-top: 0;
-            opacity: 0.9;
-        }
+      .title-container {
+        text-align: center;
+        margin-bottom: 40px;
+      }
 
-        .footer {
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            font-size: 0.8em;
-            opacity: 0.06;
-            transition: opacity 0.3s ease;
-        }
-        .footer:hover {
-            opacity: 1;
-        }
+      .title-container h1 {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 3.5em;
+        letter-spacing: -1px;
+        margin: 0;
+        line-height: 1;
+      }
 
-        .footer-hidden {
-            text-align: center;
-            padding: 5px;
-            margin-top: 5px;
-            font-size: 0.7em;
-            opacity: 0.05;
-            transition: opacity 0.3s ease;
-        }
-        .footer-hidden:hover {
-            opacity: 1;
-        }
+      .title-container .subtitle {
+        font-size: 2.5em;
+        margin-top: 0;
+        opacity: 0.9;
+      }
+
+      .footer {
+        text-align: center;
+        padding: 20px;
+        margin-top: 40px;
+        font-size: 0.8em;
+        opacity: 0.06;
+        transition: opacity 0.3s ease;
+      }
+      .footer:hover {
+        opacity: 1;
+      }
+
+      .footer-hidden {
+        text-align: center;
+        padding: 5px;
+        margin-top: 5px;
+        font-size: 0.7em;
+        opacity: 0.05;
+        transition: opacity 0.3s ease;
+      }
+      .footer-hidden:hover {
+        opacity: 1;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <div class="title-container">
-            <h1>awesome</h1>
-        </div>
-        <div class="toc">
-            <ul>
-                <li><img src="https://img.icons8.com/ios-filled/50/ffffff/artificial-intelligence.png" alt="AI Icon" width="20"><a href="#ai">AI</a></li>
-                <li><img src="https://img.icons8.com/ios-filled/50/ffffff/sushi.png" alt="Anime Icon" width="20"><a href="#anime-manga">Anime / Manga</a></li>
-                <li><img src="https://img.icons8.com/ios-filled/50/ffffff/internet-browser.png" alt="Browser Icon" width="20"><a href="#browsers">Browsers</a></li>
-                <li><img src="https://img.icons8.com/ios-filled/50/ffffff/code.png" alt="Code Icon" width="20"><a href="#coding">Coding</a></li>
-                <li><img src="https://img.icons8.com/ios-filled/50/ffffff/file.png" alt="File Icon" width="20"><a href="#file-management">File Management</a></li>
-                <li><img src="https://img.icons8.com/ios-filled/50/ffffff/controller.png" alt="Gaming Icon" width="20"><a href="#gaming">Gaming</a></li>
-                <li><img src="https://img.icons8.com/ios-filled/50/ffffff/video.png" alt="Media Icon" width="20"><a href="#media-players">Media Players</a></li>
-                <li><img src="https://img.icons8.com/ios-filled/50/ffffff/movie.png" alt="Movies Icon" width="20"><a href="#movies-tv-shows">Movies / TV Shows</a></li>
-                <li><img src="https://img.icons8.com/ios-filled/50/ffffff/musical-notes.png" alt="Music Icon" width="20"><a href="#music">Music</a></li>
-                <li><img src="https://img.icons8.com/ios-filled/50/ffffff/task.png" alt="Productivity Icon" width="20"><a href="#productivity">Productivity</a></li>
-                <li><img src="https://img.icons8.com/ios-filled/50/ffffff/settings.png" alt="Utilities Icon" width="20"><a href="#utilities">Utilities</a></li>
-            </ul>
-        </div>
-        <section class="categories">
-            <section class="category" id="ai">
-                <h2>AI</h2>
-                <p><a href="https://chatgpt.com">ChatGPT</a> - AI chatbot by OpenAI</p>
-                <p><a href="https://github.com/features/copilot">Copilot</a> - AI pair programmer by GitHub</p>
-                <p><a href="https://www.deepseek.com">DeepSeek</a> - Free and open-source AI chatbot with reasoning capabilities</p>
-                <p><a href="https://ollama.com">Ollama</a> - AI platform for building and deploying models</p>
-                <p><a href="https://github.com/open-webui/open-webui">Open WebUI</a> - Open-source web-based user interface for AI models</p>
-                <p><a href="https://www.perplexity.ai">Perplexity</a> - AI-powered search engine with real-time information</p>
-            </section>
-            <section class="category" id="anime-manga">
-                <h2>Anime / Manga</h2>
-                <p><a href="https://github.com/pystardust/ani-cli">ani-cli</a> - A CLI tool to stream and download anime</p>
-                <p><a href="https://anilist.co">AniList</a> - Social anime and manga database and tracking platform</p>
-                <p><a href="https://mangadex.org">MangaDex</a> - Manga reading platform with a vast library and active community</p>
-                <p><a href="https://www.miruro.tv">Miruro</a> - Ad-free anime streaming platform with a clean interface and extensive collection</p>
-            </section>
-            <section class="category" id="browsers">
-                <h2>Browsers</h2>
-                <p><a href="https://arc.net">Arc</a> - A new, aesthetically pleasing browser</p>
-                <p><a href="https://brave.com">Brave</a> - Chromium-based browser with built in adblocker</p>
-                <p><a href="https://github.com/uazo/cromite">Cromite</a> - Mobile browser with support for Chrome extensions</p>
-                <p><a href="https://thorium.rocks">Thorium</a> - A Chromium-based browser with extra features</p>
-            </section>
-            <section class="category" id="coding">
-                <h2>Coding</h2>
-                <p><a href="https://www.codewars.com">Codewars</a> - Platform to improve coding skills through challenges</p>
-                <p><a href="https://cs50.harvard.edu/x">CS50x</a> - Harvard University's introduction to computer science</p>
-                <p><a href="https://www.docker.com">Docker</a> - Platform for developing, shipping, and running applications</p>
-                <p><a href="https://www.freecodecamp.org">freeCodeCamp</a> - Free coding curriculum and certifications</p>
-                <p><a href="https://github.com">GitHub</a> - Code hosting, collaboration and version control platform</p>
-                <p><a href="https://neovim.io/">Neovim</a> - Hyperextensible Vim-based text editor</p>
-                <p><a href="https://stackoverflow.com">Stack Overflow</a> - Q&A community for programmers</p>
-                <p><a href="https://code.visualstudio.com">Visual Studio Code</a> - Powerful and extensible code editor</p>
-            </section>
-            <section class="category" id="file-management">
-                <h2>File Management</h2>
-                <p><a href="https://www.7-zip.org">7-Zip</a> - File archiver with a high compression ratio</p>
-                <p><a href="https://localsend.org">LocalSend</a> - Cross-platform file sharing app</p>
-                <p><a href="https://apps.apple.com/us/app/the-unarchiver/id425424353?mt=12">The Unarchiver</a> - Unarchive many different kinds of archive files</p>
-            </section>
-            <section class="category" id="gaming">
-                <h2>Gaming</h2>
-                <p><a href="https://emulationstation.org">EmulationStation</a> - Graphical front-end for emulators</p>
-                <p><a href="https://openemu.org">OpenEmu</a> - Open-source multi-system game emulator for macOS</p>
-                <p><a href="https://github.com/pret/pokeemerald">PokeFireRed</a> - Decompilation of Pokémon FireRed</p>
-                <p><a href="https://playnite.link">Playnite</a> - Open-source video game library manager</p>
-                <p><a href="https://fitgirl-repacks.site">FitGirl Repacks</a> - Repacked games with smaller file sizes</p>
-                <p><a href="https://steamunlocked.net">SteamUnlocked</a> - Free pre-installed games</p>
-            </section>
-            <section class="category" id="media-players">
-                <h2>Media Players</h2>
-                <p><a href="https://mpv.io">mpv</a> - Free, open-source, and cross-platform media player</p>
-                <p><a href="https://github.com/iina/iina">IINA</a> - Modern media player for macOS</p>
-                <p><a href="https://www.videolan.org/vlc/">VLC</a> - Open-source cross-platform multimedia player</p>
-            </section>
-            <section class="category" id="movies-tv-shows">
-                <h2>Movies / TV Shows</h2>
-                <p><a href="https://github.com/recloudstream/cloudstream">Cloudstream</a> - Streaming app for movies and TV shows</p>
-                <p><a href="https://www.stremio.com">Stremio</a> - Media center for streaming movies and TV shows</p>
-                <p><a href="https://torrentio.strem.fun">Torrentio</a> - Torrentio addon for Stremio</p>
-                <p><a href="https://www.1337xx.to">1337x</a> - Torrent site for movies, TV shows, games, and more</p>
-                <p><a href="https://www.subs4free.club">Subs4Free</a> - Greek subtitles for movies and TV shows</p>
-            </section>
-            <section class="category" id="music">
-                <h2>Music</h2>
-                <p><a href="https://librescore.org">LibreScore</a> - Open-source music notation software</p>
-                <p><a href="https://github.com/mostafaalagamy/Metrolist">Metrolist</a> - Music discovery and playlist management tool</p>
-                <p><a href="https://nicotine-plus.org">Nicotine+</a> - Free and open-source music sharing client</p>
-                <p><a href="https://receiptify.herokuapp.com">Receiptify</a> - Generate receipt-style lists from your Spotify data</p>
-                <p><a href="https://github.com/SpotX-Official/SpotX">SpotX</a> - Ad blocker and more for Spotify on Windows</p>
-                <p><a href="https://github.com/SpotX-Official/SpotX-Bash">SpotX-Bash</a> - Ad blocker and more for Spotify on macOS and Linux</p>
-                <p><a href="https://xmanagerapp.com">Xmanager</a> - Download patched Spotify for Android</p>
-            </section>
-            <section class="category" id="productivity">
-                <h2>Productivity</h2>
-                <p><a href="https://www.alfredapp.com">Alfred</a> - Productivity application for macOS</p>
-                <p><a href="https://apps.apple.com/us/app/amphetamine/id937984704?mt=12">Amphetamine</a> - Keep your Mac awake</p>
-                <p><a href="https://github.com/aparks5/borders">Borders</a> - Simple window borders for macOS</p>
-                <p><a href="https://brew.sh">Homebrew</a> - Package manager for macOS</p>
-                <p><a href="https://maccy.app">Maccy</a> - Lightweight clipboard manager for macOS</p>
-                <p><a href="https://github.com/FelixKratz/SketchyBar">SketchyBar</a> - Highly customizable macOS status bar replacement</p>
-                <p><a href="https://github.com/koekeishiya/skhd">skhd</a> - Simple hotkey daemon for macOS</p>
-                <p><a href="https://github.com/koekeishiya/yabai">yabai</a> - Tiling window manager for macOS</p>
-            </section>
-            <section class="category" id="utilities">
-                <h2>Utilities</h2>
-                <p><a href="https://github.com/odlp/bluesnooze">BlueSnooze</a> - Bluetooth sleep management for macOS</p>
-                <p><a href="https://github.com/dylanaraps/cowsay">Cowsay</a> - A configurable talking cow</p>
-                <p><a href="https://cloudconvert.com">CloudConvert</a> - Convert files between 200+ formats online</p>
-                <p><a href="https://github.com/davatorium/rofi">Rofi</a> - A window switcher, application launcher, and dmenu replacement</p>
-                <p><a href="https://sw.kovidgoyal.net/kitty/">Kitty</a> - Fast, feature-rich, GPU-based terminal emulator</p>
-                <p><a href="https://www.progressivedownloader.com">Progressive Downloader</a> - Advanced download manager for macOS</p>
-                <p><a href="https://www.qbittorrent.org">qBittorrent</a> - Free and reliable P2P BitTorrent client</p>
-                <p><a href="https://github.com/christitus/windows-tool">Titus Windows Tool</a> - Windows utility tool</p>
-                <p><a href="https://transmissionbt.com">Transmission</a> - Fast, easy, and free BitTorrent client</p>
-                <p><a href="https://apps.microsoft.com/detail/9pf4kz2vn4w9?rtc=1&hl=el-GR&gl=GR">TranslucentTB</a> - Customize the appearance of your taskbar</p>
-                <p><a href="https://github.com/microsoft/PowerToys">PowerToys</a> - Utility tools for Windows</p>
-                <p><a href="https://sideloadly.io">Sideloadly</a> - Sideload apps on iOS devices</p>
-                <p><a href="https://i3wm.org/">i3</a> - Tiling window manager</p>
-                <p><a href="https://github.com/dylanaraps/neofetch">Neofetch</a> - A command-line system information tool</p>
-                <p><a href="https://github.com/nvbn/thefuck">TheFuck</a> - Magnificent app which corrects your previous console command</p>
-                <p><a href="https://www.gimp.org">GIMP</a> - Free and open-source image editor</p>
-            </section>
+      <div class="title-container">
+        <h1>awesome</h1>
+      </div>
+      <div class="toc">
+        <ul>
+          <li>
+            <img
+              src="https://img.icons8.com/ios-filled/50/ffffff/artificial-intelligence.png"
+              alt="AI Icon"
+              width="20"
+            /><a href="#ai">AI</a>
+          </li>
+          <li>
+            <img
+              src="https://img.icons8.com/ios-filled/50/ffffff/sushi.png"
+              alt="Anime Icon"
+              width="20"
+            /><a href="#anime-manga">Anime / Manga</a>
+          </li>
+          <li>
+            <img
+              src="https://img.icons8.com/ios-filled/50/ffffff/internet-browser.png"
+              alt="Browser Icon"
+              width="20"
+            /><a href="#browsers">Browsers</a>
+          </li>
+          <li>
+            <img
+              src="https://img.icons8.com/ios-filled/50/ffffff/code.png"
+              alt="Code Icon"
+              width="20"
+            /><a href="#coding">Coding</a>
+          </li>
+          <li>
+            <img
+              src="https://img.icons8.com/ios-filled/50/ffffff/file.png"
+              alt="File Icon"
+              width="20"
+            /><a href="#file-management">File Management</a>
+          </li>
+          <li>
+            <img
+              src="https://img.icons8.com/ios-filled/50/ffffff/controller.png"
+              alt="Gaming Icon"
+              width="20"
+            /><a href="#gaming">Gaming</a>
+          </li>
+          <li>
+            <img
+              src="https://img.icons8.com/ios-filled/50/ffffff/video.png"
+              alt="Media Icon"
+              width="20"
+            /><a href="#media-players">Media Players</a>
+          </li>
+          <li>
+            <img
+              src="https://img.icons8.com/ios-filled/50/ffffff/movie.png"
+              alt="Movies Icon"
+              width="20"
+            /><a href="#movies-tv-shows">Movies / TV Shows</a>
+          </li>
+          <li>
+            <img
+              src="https://img.icons8.com/ios-filled/50/ffffff/musical-notes.png"
+              alt="Music Icon"
+              width="20"
+            /><a href="#music">Music</a>
+          </li>
+          <li>
+            <img
+              src="https://img.icons8.com/ios-filled/50/ffffff/task.png"
+              alt="Productivity Icon"
+              width="20"
+            /><a href="#productivity">Productivity</a>
+          </li>
+          <li>
+            <img
+              src="https://img.icons8.com/ios-filled/50/ffffff/settings.png"
+              alt="Utilities Icon"
+              width="20"
+            /><a href="#utilities">Utilities</a>
+          </li>
+        </ul>
+      </div>
+      <section class="categories">
+        <section class="category" id="ai">
+          <h2>AI</h2>
+          <p>
+            <a href="https://chatgpt.com">ChatGPT</a> - AI chatbot by OpenAI
+          </p>
+          <p>
+            <a href="https://github.com/features/copilot">Copilot</a> - AI pair
+            programmer by GitHub
+          </p>
+          <p>
+            <a href="https://www.deepseek.com">DeepSeek</a> - Free and
+            open-source AI chatbot with reasoning capabilities
+          </p>
+          <p>
+            <a href="https://ollama.com">Ollama</a> - AI platform for building
+            and deploying models
+          </p>
+          <p>
+            <a href="https://github.com/open-webui/open-webui">Open WebUI</a> -
+            Open-source web-based user interface for AI models
+          </p>
+          <p>
+            <a href="https://www.perplexity.ai">Perplexity</a> - AI-powered
+            search engine with real-time information
+          </p>
         </section>
-        <div class="footer">
-            Icons by <a href="https://icons8.com">Icons8</a>
-        </div>
-        <div class="footer-hidden">
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Έχεις δίκιο, Γιάννη</a>
-        </div>
+        <section class="category" id="anime-manga">
+          <h2>Anime / Manga</h2>
+          <p>
+            <a href="https://github.com/pystardust/ani-cli">ani-cli</a> - A CLI
+            tool to stream and download anime
+          </p>
+          <p>
+            <a href="https://anilist.co">AniList</a> - Social anime and manga
+            database and tracking platform
+          </p>
+          <p>
+            <a href="https://mangadex.org">MangaDex</a> - Manga reading platform
+            with a vast library and active community
+          </p>
+          <p>
+            <a href="https://www.miruro.tv">Miruro</a> - Ad-free anime streaming
+            platform with a clean interface and extensive collection
+          </p>
+        </section>
+        <section class="category" id="browsers">
+          <h2>Browsers</h2>
+          <p>
+            <a href="https://arc.net">Arc</a> - A new, aesthetically pleasing
+            browser
+          </p>
+          <p>
+            <a href="https://brave.com">Brave</a> - Chromium-based browser with
+            built in adblocker
+          </p>
+          <p>
+            <a href="https://github.com/uazo/cromite">Cromite</a> - Mobile
+            browser with support for Chrome extensions
+          </p>
+          <p>
+            <a href="https://thorium.rocks">Thorium</a> - A Chromium-based
+            browser with extra features
+          </p>
+        </section>
+        <section class="category" id="coding">
+          <h2>Coding</h2>
+          <p>
+            <a href="https://www.codewars.com">Codewars</a> - Platform to
+            improve coding skills through challenges
+          </p>
+          <p>
+            <a href="https://cs50.harvard.edu/x">CS50x</a> - Harvard
+            University's introduction to computer science
+          </p>
+          <p>
+            <a href="https://www.docker.com">Docker</a> - Platform for
+            developing, shipping, and running applications
+          </p>
+          <p>
+            <a href="https://www.freecodecamp.org">freeCodeCamp</a> - Free
+            coding curriculum and certifications
+          </p>
+          <p>
+            <a href="https://github.com">GitHub</a> - Code hosting,
+            collaboration and version control platform
+          </p>
+          <p>
+            <a href="https://neovim.io/">Neovim</a> - Hyperextensible Vim-based
+            text editor
+          </p>
+          <p>
+            <a href="https://stackoverflow.com">Stack Overflow</a> - Q&A
+            community for programmers
+          </p>
+          <p>
+            <a href="https://code.visualstudio.com">Visual Studio Code</a> -
+            Powerful and extensible code editor
+          </p>
+        </section>
+        <section class="category" id="file-management">
+          <h2>File Management</h2>
+          <p>
+            <a href="https://www.7-zip.org">7-Zip</a> - File archiver with a
+            high compression ratio
+          </p>
+          <p>
+            <a href="https://localsend.org">LocalSend</a> - Cross-platform file
+            sharing app
+          </p>
+          <p>
+            <a
+              href="https://apps.apple.com/us/app/the-unarchiver/id425424353?mt=12"
+              >The Unarchiver</a
+            >
+            - Unarchive many different kinds of archive files
+          </p>
+        </section>
+        <section class="category" id="gaming">
+          <h2>Gaming</h2>
+          <p>
+            <a href="https://emulationstation.org">EmulationStation</a> -
+            Graphical front-end for emulators
+          </p>
+          <p>
+            <a href="https://openemu.org">OpenEmu</a> - Open-source multi-system
+            game emulator for macOS
+          </p>
+          <p>
+            <a href="https://github.com/pret/pokeemerald">PokeFireRed</a> -
+            Decompilation of Pokémon FireRed
+          </p>
+          <p>
+            <a href="https://playnite.link">Playnite</a> - Open-source video
+            game library manager
+          </p>
+          <p>
+            <a href="https://fitgirl-repacks.site">FitGirl Repacks</a> -
+            Repacked games with smaller file sizes
+          </p>
+          <p>
+            <a href="https://steamunlocked.net">SteamUnlocked</a> - Free
+            pre-installed games
+          </p>
+        </section>
+        <section class="category" id="media-players">
+          <h2>Media Players</h2>
+          <p>
+            <a href="https://mpv.io">mpv</a> - Free, open-source, and
+            cross-platform media player
+          </p>
+          <p>
+            <a href="https://github.com/iina/iina">IINA</a> - Modern media
+            player for macOS
+          </p>
+          <p>
+            <a href="https://www.videolan.org/vlc/">VLC</a> - Open-source
+            cross-platform multimedia player
+          </p>
+        </section>
+        <section class="category" id="movies-tv-shows">
+          <h2>Movies / TV Shows</h2>
+          <p>
+            <a href="https://github.com/recloudstream/cloudstream"
+              >Cloudstream</a
+            >
+            - Streaming app for movies and TV shows
+          </p>
+          <p>
+            <a href="https://www.stremio.com">Stremio</a> - Media center for
+            streaming movies and TV shows
+          </p>
+          <p>
+            <a href="https://torrentio.strem.fun">Torrentio</a> - Torrentio
+            addon for Stremio
+          </p>
+          <p>
+            <a href="https://www.1337xx.to">1337x</a> - Torrent site for movies,
+            TV shows, games, and more
+          </p>
+          <p>
+            <a href="https://www.subs4free.club">Subs4Free</a> - Greek subtitles
+            for movies and TV shows
+          </p>
+        </section>
+        <section class="category" id="music">
+          <h2>Music</h2>
+          <p>
+            <a href="https://librescore.org">LibreScore</a> - Open-source music
+            notation software
+          </p>
+          <p>
+            <a href="https://github.com/mostafaalagamy/Metrolist">Metrolist</a>
+            - Music discovery and playlist management tool
+          </p>
+          <p>
+            <a href="https://nicotine-plus.org">Nicotine+</a> - Free and
+            open-source music sharing client
+          </p>
+          <p>
+            <a href="https://receiptify.herokuapp.com">Receiptify</a> - Generate
+            receipt-style lists from your Spotify data
+          </p>
+          <p>
+            <a href="https://github.com/SpotX-Official/SpotX">SpotX</a> - Ad
+            blocker and more for Spotify on Windows
+          </p>
+          <p>
+            <a href="https://github.com/SpotX-Official/SpotX-Bash"
+              >SpotX-Bash</a
+            >
+            - Ad blocker and more for Spotify on macOS and Linux
+          </p>
+          <p>
+            <a href="https://xmanagerapp.com">Xmanager</a> - Download patched
+            Spotify for Android
+          </p>
+        </section>
+        <section class="category" id="productivity">
+          <h2>Productivity</h2>
+          <p>
+            <a href="https://www.alfredapp.com">Alfred</a> - Productivity
+            application for macOS
+          </p>
+          <p>
+            <a
+              href="https://apps.apple.com/us/app/amphetamine/id937984704?mt=12"
+              >Amphetamine</a
+            >
+            - Keep your Mac awake
+          </p>
+          <p>
+            <a href="https://github.com/aparks5/borders">Borders</a> - Simple
+            window borders for macOS
+          </p>
+          <p>
+            <a href="https://brew.sh">Homebrew</a> - Package manager for macOS
+          </p>
+          <p>
+            <a href="https://maccy.app">Maccy</a> - Lightweight clipboard
+            manager for macOS
+          </p>
+          <p>
+            <a href="https://github.com/FelixKratz/SketchyBar">SketchyBar</a> -
+            Highly customizable macOS status bar replacement
+          </p>
+          <p>
+            <a href="https://github.com/koekeishiya/skhd">skhd</a> - Simple
+            hotkey daemon for macOS
+          </p>
+          <p>
+            <a href="https://github.com/koekeishiya/yabai">yabai</a> - Tiling
+            window manager for macOS
+          </p>
+        </section>
+        <section class="category" id="utilities">
+          <h2>Utilities</h2>
+          <p>
+            <a href="https://github.com/odlp/bluesnooze">BlueSnooze</a> -
+            Bluetooth sleep management for macOS
+          </p>
+          <p>
+            <a href="https://github.com/dylanaraps/cowsay">Cowsay</a> - A
+            configurable talking cow
+          </p>
+          <p>
+            <a href="https://cloudconvert.com">CloudConvert</a> - Convert files
+            between 200+ formats online
+          </p>
+          <p>
+            <a href="https://github.com/davatorium/rofi">Rofi</a> - A window
+            switcher, application launcher, and dmenu replacement
+          </p>
+          <p>
+            <a href="https://sw.kovidgoyal.net/kitty/">Kitty</a> - Fast,
+            feature-rich, GPU-based terminal emulator
+          </p>
+          <p>
+            <a href="https://www.progressivedownloader.com"
+              >Progressive Downloader</a
+            >
+            - Advanced download manager for macOS
+          </p>
+          <p>
+            <a href="https://www.qbittorrent.org">qBittorrent</a> - Free and
+            reliable P2P BitTorrent client
+          </p>
+          <p>
+            <a href="https://github.com/christitus/windows-tool"
+              >Titus Windows Tool</a
+            >
+            - Windows utility tool
+          </p>
+          <p>
+            <a href="https://transmissionbt.com">Transmission</a> - Fast, easy,
+            and free BitTorrent client
+          </p>
+          <p>
+            <a
+              href="https://apps.microsoft.com/detail/9pf4kz2vn4w9?rtc=1&hl=el-GR&gl=GR"
+              >TranslucentTB</a
+            >
+            - Customize the appearance of your taskbar
+          </p>
+          <p>
+            <a href="https://github.com/microsoft/PowerToys">PowerToys</a> -
+            Utility tools for Windows
+          </p>
+          <p>
+            <a href="https://sideloadly.io">Sideloadly</a> - Sideload apps on
+            iOS devices
+          </p>
+          <p><a href="https://i3wm.org/">i3</a> - Tiling window manager</p>
+          <p>
+            <a href="https://github.com/dylanaraps/neofetch">Neofetch</a> - A
+            command-line system information tool
+          </p>
+          <p>
+            <a href="https://github.com/nvbn/thefuck">TheFuck</a> - Magnificent
+            app which corrects your previous console command
+          </p>
+          <p>
+            <a href="https://www.gimp.org">GIMP</a> - Free and open-source image
+            editor
+          </p>
+        </section>
+      </section>
+      <div class="footer">Icons by <a href="https://icons8.com">Icons8</a></div>
+      <div class="footer-hidden">
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          >Έχεις δίκιο, Γιάννη</a
+        >
+      </div>
     </div>
     <script>
-        document.querySelectorAll('.toc a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'nearest'
-                });
-            });
+      document.querySelectorAll(".toc a").forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href");
+          const targetElement = document.querySelector(targetId);
+
+          targetElement.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+          });
         });
+      });
     </script>
-</body>
+  </body>
 </html>
