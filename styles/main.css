@@ -1,0 +1,136 @@
+:root {
+  --matcha-dark: #1b2021;
+  --matcha-green: #86a789;
+  --matcha-light: #d2e3c8;
+  --matcha-cream: #ebf3e8;
+  --matcha-shadow: rgba(27, 32, 33, 0.2);
+}
+
+body {
+  background-color: var(--matcha-dark);
+  font-family: "Space Grotesk", sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--matcha-cream);
+  scroll-behavior: smooth;
+}
+
+a {
+  color: var(--matcha-green);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: var(--matcha-light);
+}
+
+.container {
+  width: 60%;
+  padding: 20px;
+  background: transparent;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.category {
+  margin-top: 20px;
+  scroll-margin-top: 20px;
+}
+
+.toc {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  padding: 20px 0;
+  background: rgba(134, 167, 137, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  border: 1px solid var(--matcha-green);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0 20px;
+  margin: 0;
+}
+
+.toc ul li {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.toc ul li img {
+  margin-right: 10px;
+}
+
+.toc ul li span.kanji {
+  font-size: 20px;
+  margin-right: 10px;
+  color: #ffffff;
+}
+
+.category h2 {
+  color: var(--matcha-green);
+  border-bottom: 2px solid var(--matcha-green);
+  padding-bottom: 8px;
+}
+
+.toc ul li a {
+  color: var(--matcha-light);
+  transition: color 0.8s ease;
+}
+
+.toc ul li a:hover {
+  color: var(--matcha-cream);
+}
+
+.title-container {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.title-container h1 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 3.5em;
+  letter-spacing: -1px;
+  margin: 0;
+  line-height: 1;
+}
+
+.title-container .subtitle {
+  font-size: 2.5em;
+  margin-top: 0;
+  opacity: 0.9;
+}
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  font-size: 0.8em;
+  opacity: 0.06;
+  transition: opacity 0.3s ease;
+}
+
+.footer:hover {
+  opacity: 1;
+}
+
+.footer-hidden {
+  text-align: center;
+  padding: 5px;
+  margin-top: 5px;
+  font-size: 0.7em;
+  opacity: 0.05;
+  transition: opacity 0.3s ease;
+}
+
+.footer-hidden:hover {
+  opacity: 1;
+}
