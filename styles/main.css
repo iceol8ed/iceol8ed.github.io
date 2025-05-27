@@ -152,7 +152,7 @@ a:focus {
 }
 
 .cocktail-header.open .cocktail-arrow {
-  transform: rotate(90deg);
+  transform: rotate(-90deg);
   opacity: 1;
 }
 
