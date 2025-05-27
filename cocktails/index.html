@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cocktails</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/main.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="title-container">
+        <h1>Cocktails</h1>
+        <div class="subtitle">Ingredients & Instructions</div>
+      </div>
+      <div class="toc">
+        <ul id="cocktail-toc">
+          <li><a href="#negroni">Negroni</a></li>
+        </ul>
+      </div>
+      <section class="categories" id="cocktail-list">
+        <section class="category" id="negroni">
+          <div
+            class="cocktail-header"
+            style="display: flex; align-items: center; cursor: pointer"
+          >
+            <span style="font-size: 2em; font-weight: bold; flex: 1"
+              >Negroni</span
+            >
+            <span
+              class="dropdown-arrow"
+              style="font-size: 2em; transition: transform 0.3s"
+              >&#9660;</span
+            >
+          </div>
+          <div class="cocktail-details" style="display: none; margin-top: 10px">
+            <h3>Ingredients</h3>
+            <ul>
+              <li>1 oz Gin</li>
+              <li>1 oz Campari</li>
+              <li>1 oz Sweet Vermouth</li>
+              <li>Orange peel (for garnish)</li>
+            </ul>
+            <h3>Method</h3>
+            <ol>
+              <li>
+                Add gin, Campari, and sweet vermouth to a mixing glass with ice.
+              </li>
+              <li>Stir until well-chilled.</li>
+              <li>Strain into a rocks glass filled with ice.</li>
+              <li>Garnish with an orange peel.</li>
+            </ol>
+          </div>
+        </section>
+      </section>
+      <div class="footer">Icons by <a href="https://icons8.com">Icons8</a></div>
+      <div class="footer-hidden">
+        <a href="/">Back to main site</a>
+      </div>
+    </div>
+    <script src="../js/main.js"></script>
+    <script>
+      // Dropdown functionality for cocktails
+      document.addEventListener("DOMContentLoaded", function () {
+        document
+          .querySelectorAll(".cocktail-header")
+          .forEach(function (header) {
+            header.addEventListener("click", function () {
+              const details = header.nextElementSibling;
+              const arrow = header.querySelector(".dropdown-arrow");
+              if (details.style.display === "none" || !details.style.display) {
+                details.style.display = "block";
+                arrow.style.transform = "rotate(180deg)";
+              } else {
+                details.style.display = "none";
+                arrow.style.transform = "rotate(0deg)";
+              }
+            });
+          });
+      });
+    </script>
+  </body>
+</html>
