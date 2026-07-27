@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LaTeX to PDF | awesome</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Load Polyfill for modern JS -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    
+    <!-- Configure MathJax to enable single $ for inline math -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        }
+      };
+    </script>
+    
+    <!-- Load MathJax -->
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <style>
+        :root {
+            --matcha-dark: #1b2021;
+            --matcha-green: #86a789;
+            --matcha-light: #d2e3c8;
+            --matcha-cream: #ebf3e8;
+            --matcha-panel: rgba(134, 167, 137, 0.1);
+            --matcha-shadow: rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            background-color: var(--matcha-dark);
+            color: var(--matcha-cream);
+            font-family: "Space Grotesk", sans-serif;
+        }
+
+        header {
+            width: min(1200px, calc(100% - 40px));
+            margin: 20px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .brand a {
+            color: var(--matcha-cream);
+            text-decoration: none;
+        }
+
+        .brand-name {
+            margin: 0;
+            font-size: clamp(2.25rem, 5vw, 3.5rem);
+            line-height: 1;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            margin: 8px 0 0;
+            color: var(--matcha-green);
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        .controls button {
+            padding: 10px 16px;
+            border: 1px solid var(--matcha-green);
+            border-radius: 8px;
+            background: var(--matcha-panel);
+            color: var(--matcha-light);
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .controls button:hover,
+        .controls button:focus-visible {
+            background-color: var(--matcha-green);
+            color: var(--matcha-dark);
+            transform: translateY(-1px);
+        }
+
+        main {
+            width: min(1200px, calc(100% - 40px));
+            height: calc(100vh - 145px);
+            min-height: 520px;
+            margin: 0 auto 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .editor-panel,
+        .preview-panel {
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid var(--matcha-green);
+            border-radius: 12px;
+            background: var(--matcha-panel);
+            box-shadow: 0 4px 8px var(--matcha-shadow);
+            backdrop-filter: blur(10px);
+        }
+
+        .panel-header {
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--matcha-green);
+            color: var(--matcha-light);
+            font-weight: 700;
+        }
+
+        #latex-input {
+            flex: 1;
+            width: 100%;
+            padding: 20px;
+            resize: none;
+            border: 0;
+            outline: 0;
+            background: transparent;
+            color: var(--matcha-cream);
+            caret-color: var(--matcha-green);
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        #latex-input::placeholder {
+            color: var(--matcha-light);
+            opacity: 0.55;
+        }
+
+        #latex-input:focus {
+            box-shadow: inset 0 0 0 2px rgba(134, 167, 137, 0.25);
+        }
+
+        #preview-area {
+            flex: 1;
+            margin: 20px;
+            padding: 32px 40px;
+            overflow-y: auto;
+            border-radius: 8px;
+            background-color: var(--matcha-cream);
+            box-shadow: 0 4px 8px var(--matcha-shadow);
+            color: var(--matcha-dark);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        #preview-area p:first-child {
+            margin-top: 0;
+        }
+
+        @media (max-width: 760px) {
+            body {
+                overflow: auto;
+            }
+
+            header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .controls {
+                width: 100%;
+            }
+
+            .controls button {
+                flex: 1;
+            }
+
+            main {
+                height: auto;
+                min-height: 0;
+                grid-template-columns: 1fr;
+            }
+
+            .editor-panel,
+            .preview-panel {
+                min-height: 480px;
+            }
+
+            #preview-area {
+                margin: 14px;
+                padding: 24px;
+            }
+        }
+
+        /* Styles applied only when printing to PDF. */
+        @media print {
+            body {
+                background: white;
+            }
+
+            body * {
+                visibility: hidden;
+            }
+
+            #preview-area,
+            #preview-area * {
+                visibility: visible;
+            }
+
+            #preview-area {
+                position: absolute;
+                inset: 0;
+                width: auto;
+                min-height: 100%;
+                margin: 0;
+                padding: 0;
+                overflow: visible;
+                border-radius: 0;
+                box-shadow: none;
+                background: white;
+                color: black;
+            }
+
+            @page {
+                size: A4;
+                margin: 20mm;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand">
+            <a href="../" aria-label="Back to the awesome homepage">
+                <h1 class="brand-name">awesome</h1>
+            </a>
+            <p class="subtitle">LaTeX & Greek → PDF</p>
+        </div>
+        <div class="controls">
+            <button type="button" onclick="renderPreview()">Render Preview</button>
+            <button type="button" onclick="window.print()">Download PDF</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="editor-panel">
+            <div class="panel-header">Input (Paste LaTeX & Text Here)</div>
+            <textarea id="latex-input" placeholder="Paste your text and LaTeX here..."></textarea>
+        </div>
+
+        <div class="preview-panel">
+            <div class="panel-header">PDF Preview</div>
+            <div id="preview-area">
+                <p style="color: #94a3b8; text-align: center; margin-top: 50px;">
+                    Your rendered preview will appear here once you click "Render Preview".
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function renderPreview() {
+            const input = document.getElementById('latex-input').value;
+            const previewArea = document.getElementById('preview-area');
+            
+            // If input is empty, show a placeholder message
+            if (!input.trim()) {
+                previewArea.innerHTML = '<p style="color: #94a3b8; text-align: center; margin-top: 50px;">Your rendered preview will appear here once you click "Render Preview".</p>';
+                return;
+            }
+            
+            // Convert plain text line breaks into HTML paragraphs
+            // Split by double newlines first to create paragraphs
+            const paragraphs = input.trim().split(/\n\n+/);
+            const htmlContent = paragraphs.map(p => {
+                // Replace single newlines within paragraphs with <br> tags
+                return '<p>' + p.replace(/\n/g, '<br>') + '</p>';
+            }).join('');
+            
+            previewArea.innerHTML = htmlContent;
+
+            // Tell MathJax to scan the document and render the new math
+            if (window.MathJax) {
+                MathJax.typesetClear([previewArea]);
+                MathJax.typesetPromise([previewArea]).then(() => {
+                    console.log("MathJax rendering complete.");
+                }).catch((err) => console.error(err));
+            }
+        }
+    </script>
+</body>
+</html>
