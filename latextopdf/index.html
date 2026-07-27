@@ -206,26 +206,36 @@
             }
         }
 
-        /* Styles applied only when printing to PDF. */
+        /* Print the preview in normal document flow to avoid extra blank pages. */
         @media print {
             body {
                 background: white;
+                color: black;
             }
 
-            body * {
-                visibility: hidden;
+            header,
+            .editor-panel,
+            .panel-header {
+                display: none !important;
             }
 
-            #preview-area,
-            #preview-area * {
-                visibility: visible;
+            main,
+            .preview-panel {
+                display: block;
+                width: auto;
+                height: auto;
+                min-height: 0;
+                margin: 0;
+                overflow: visible;
+                border: 0;
+                box-shadow: none;
+                background: white;
             }
 
             #preview-area {
-                position: absolute;
-                inset: 0;
+                display: block;
                 width: auto;
-                min-height: 100%;
+                min-height: 0;
                 margin: 0;
                 padding: 0;
                 overflow: visible;
